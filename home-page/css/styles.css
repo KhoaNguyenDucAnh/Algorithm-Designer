@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    text-align: center;
+    font-weight: normal;
+}
+img {
+    width: 200px;
+    height: 200px;
+}
+h1 {
+    font-family: 'Sacramento', cursive;
+    margin: 0;
+    font-size: 5rem;
+    color: #472183;
+}
+h2 {
+    font-family: 'Coiny', cursive;
+    font-size: 2.5rem;
+    margin: 0;
+    color: #66BFBF;
+    font-weight: normal;
+}
+h3{
+    font-family: 'Coiny', cursive;
+    color: #11999E;
+    margin: 0;
+}
+h4{
+    font-family: 'Coiny', cursive;
+    color: #11999E;
+    margin: 0;
+}
+p {
+    line-height: 2;
+    font-family: 'Coiny', cursive;
+    color: #11999E;
+}
+
+.titlep {
+    margin: 0 auto 50px auto;
+}
+
+.btn {
+    background: #b5e0b0;
+    background-image: -webkit-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: -moz-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: -ms-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: -o-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: linear-gradient(to bottom, #b5e0b0, #a4bfe0);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: 'Coiny', cursive;
+    color: #ffe5ff;
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin: 50px 20px;
+  }
+  
+.btn:hover {
+    background: #3cc9fc;
+    background-image: -webkit-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: -moz-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: -ms-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: -o-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: linear-gradient(to bottom, #3cc9fc, #aad934);
+    text-decoration: none;
+  }
+
+.logIn {
+    background: #08d148;
+    background-image: -webkit-linear-gradient(top, #08d148, #062a55);
+    background-image: -moz-linear-gradient(top, #08d148, #062a55);
+    background-image: -ms-linear-gradient(top, #08d148, #062a55);
+    background-image: -o-linear-gradient(top, #08d148, #062a55);
+    background-image: linear-gradient(to bottom, #08d148, #062a55);
+    position: absolute;
+    right: 50px;
+    bottom: -38px;
+}
+.signUp {
+    background: #08d148;
+    background-image: -webkit-linear-gradient(top, #08d148, #062a55);
+    background-image: -moz-linear-gradient(top, #08d148, #062a55);
+    background-image: -ms-linear-gradient(top, #08d148, #062a55);
+    background-image: -o-linear-gradient(top, #08d148, #062a55);
+    background-image: linear-gradient(to bottom, #08d148, #062a55);
+    position: absolute;
+    right: 200px;
+    bottom: -38px;
+}
+  
+.menuBar {
+    height: 90px;
+    background-color: #C9F4AA;
+    margin: 0;
+    position: relative;
+}
+.logo {
+    height: 70px;
+    width: 70px;
+    margin: 10px;
+    position: absolute;
+    left: 20px;
+}
+.member {
+    display: inline-block;
+    margin: 10px 60px;
+}
+.introduction {
+    background-color: #B5F1CC;
+    padding: 80px;
+}
+.aboutUs{
+    background-color: #ADA2FF;
+    height: 600px;
+    position: relative;
+}
+.member_avatar1 {
+    position: absolute;
+    left: 182px;
+    top: 180px;
+}
+.member_avatar2 {
+    position: absolute;
+}
+.member_avatar3 {
+    position: absolute;
+}
