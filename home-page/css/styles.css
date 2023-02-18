@@ -114,17 +114,22 @@ p {
 }
 .aboutUs{
     background-color: #ADA2FF;
-    height: 600px;
+    height: 500px;
     position: relative;
+    padding: 50px;
 }
 .member_avatar1 {
     position: absolute;
     left: 182px;
-    top: 180px;
+    top: 230px;
 }
 .member_avatar2 {
     position: absolute;
+    left: 522px;
+    top: 230px;
 }
 .member_avatar3 {
     position: absolute;
+    top: 230px;
+    left: 862px;
 }
