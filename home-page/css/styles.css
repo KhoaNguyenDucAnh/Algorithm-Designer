@@ -42,11 +42,11 @@ p {
 
 .btn {
     background: #b5e0b0;
-    background-image: -webkit-linear-gradient(top, #b5e0b0, #a4bfe0);
-    background-image: -moz-linear-gradient(top, #b5e0b0, #a4bfe0);
-    background-image: -ms-linear-gradient(top, #b5e0b0, #a4bfe0);
-    background-image: -o-linear-gradient(top, #b5e0b0, #a4bfe0);
-    background-image: linear-gradient(to bottom, #b5e0b0, #a4bfe0);
+    background-image: -webkit-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: -moz-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: -ms-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: -o-linear-gradient(top, #3cc9fc, #aad934);
+    background-image: linear-gradient(to bottom, #3cc9fc, #aad934);
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
     border-radius: 28px;
@@ -60,33 +60,35 @@ p {
   
 .btn:hover {
     background: #3cc9fc;
-    background-image: -webkit-linear-gradient(top, #3cc9fc, #aad934);
-    background-image: -moz-linear-gradient(top, #3cc9fc, #aad934);
-    background-image: -ms-linear-gradient(top, #3cc9fc, #aad934);
-    background-image: -o-linear-gradient(top, #3cc9fc, #aad934);
-    background-image: linear-gradient(to bottom, #3cc9fc, #aad934);
+    background-image: -webkit-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: -moz-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: -ms-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: -o-linear-gradient(top, #b5e0b0, #a4bfe0);
+    background-image: linear-gradient(to bottom, #b5e0b0, #a4bfe0);
     text-decoration: none;
   }
 
 .logIn {
     background: #08d148;
-    background-image: -webkit-linear-gradient(top, #08d148, #062a55);
-    background-image: -moz-linear-gradient(top, #08d148, #062a55);
-    background-image: -ms-linear-gradient(top, #08d148, #062a55);
-    background-image: -o-linear-gradient(top, #08d148, #062a55);
-    background-image: linear-gradient(to bottom, #08d148, #062a55);
+    background-image: -webkit-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: -moz-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: -ms-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: -o-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: linear-gradient(to bottom, #B5F1CC, #FCC2FC);
     position: absolute;
+    color: #6C00FF;
     right: 50px;
     bottom: -38px;
 }
 .signUp {
     background: #08d148;
-    background-image: -webkit-linear-gradient(top, #08d148, #062a55);
-    background-image: -moz-linear-gradient(top, #08d148, #062a55);
-    background-image: -ms-linear-gradient(top, #08d148, #062a55);
-    background-image: -o-linear-gradient(top, #08d148, #062a55);
-    background-image: linear-gradient(to bottom, #08d148, #062a55);
+    background-image: -webkit-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: -moz-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: -ms-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: -o-linear-gradient(top, #B5F1CC, #FCC2FC);
+    background-image: linear-gradient(to bottom, #B5F1CC, #FCC2FC);
     position: absolute;
+    color: #6C00FF;
     right: 200px;
     bottom: -38px;
 }
@@ -110,7 +112,10 @@ p {
 }
 .introduction {
     background-color: #B5F1CC;
+    height: 60vh;
     padding: 80px;
+    line-height: 2;
+    position: relative;
 }
 .aboutUs{
     background-color: #ADA2FF;
@@ -130,6 +135,20 @@ p {
 }
 .member_avatar3 {
     position: absolute;
-    top: 230px;
     left: 862px;
+    top: 230px;
+}
+.cloud1 {
+    width: 190px;
+    height: 60px;
+    position: absolute;
+    left: 10vw;
+    top: 45vh;
+}
+.cloud2 {
+    width: 190px;
+    height: 60px;
+    position: absolute;
+    left: 75vw;
+    top: 20vh;
 }
