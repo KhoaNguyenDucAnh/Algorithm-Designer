@@ -55,7 +55,7 @@ p {
     font-size: 30px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-    margin: 50px 20px;
+    margin: 10px 20px;
   }
   
 .btn:hover {
@@ -75,10 +75,10 @@ p {
     background-image: -ms-linear-gradient(top, #B5F1CC, #FCC2FC);
     background-image: -o-linear-gradient(top, #B5F1CC, #FCC2FC);
     background-image: linear-gradient(to bottom, #B5F1CC, #FCC2FC);
-    position: absolute;
+    /* position: absolute; */
     color: #6C00FF;
     right: 50px;
-    bottom: -38px;
+    /* bottom: -38px; */
 }
 .signUp {
     background: #08d148;
@@ -87,23 +87,30 @@ p {
     background-image: -ms-linear-gradient(top, #B5F1CC, #FCC2FC);
     background-image: -o-linear-gradient(top, #B5F1CC, #FCC2FC);
     background-image: linear-gradient(to bottom, #B5F1CC, #FCC2FC);
-    position: absolute;
+    /* position: absolute; */
     color: #6C00FF;
     right: 200px;
-    bottom: -38px;
+    /* bottom: -38px; */
 }
   
 .menuBar {
-    height: 90px;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    display: flex;
     background-color: #C9F4AA;
     margin: 0;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 .logo {
     height: 70px;
     width: 70px;
     margin: 10px;
-    position: absolute;
+    /* position: absolute; */
     left: 20px;
 }
 .member {
@@ -114,8 +121,10 @@ p {
     background-color: #B5F1CC;
     height: 60vh;
     padding: 80px;
+    margin-top:90px;
     line-height: 2;
     position: relative;
+    
 }
 .aboutUs{
     background-color: #ADA2FF;
