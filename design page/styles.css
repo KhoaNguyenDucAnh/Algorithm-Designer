@@ -1,5 +1,5 @@
 body {
-    background-color: #E5E0FF;
+    background-color: black;
     margin: 0;
     padding: 0;
 }
@@ -14,24 +14,73 @@ body {
     align-items: center;
     flex-direction: column;
     position: fixed;
+    z-index: 2;
 }
 .block-holder{
     min-height: 50px;
     min-width: 50px;
-    background: red;
+    background: transparent;
+    border: 2px solid black;
     order: 2;
+    margin: 0;
 }
-.chart-section{
-    min-height: 100vh;
-    width: 85vw;
+.space{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    border: 2px solid black;
+    order: 2;
+    margin: 0;
+    flex: 4;
+}
+.code-block{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: scroll;
+    order: 2;
+    margin: 0;
+    flex-direction: column;
+    border: 2px solid black;
+    flex: 1;
+}
+.branch-container{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    margin: 0;
+    border: 2px solid black;
+}
+.block-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    border: 2px solid black;
+}
+.branch-statement{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.chart-section{
+    min-height: 100vh;
+    min-width: 83vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
     flex-flow: column;
     background: white;
     position: relative;
     left: 17vw;
+    z-index: 1;
 }
 .block {
     margin: 4vh 2vw;
@@ -65,39 +114,27 @@ body {
     order: 4;
 }
 
-.hexagon {
-    position:relative;
-    box-sizing: border-box;
-    border: 1px solid yellow;
+.hexagon { 
+    margin: 4vh 3vw;
+    width: 13vw;
+    background: url(image/hexagon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     order: 5;
-}
-.hexagon::before, .hexagon::after {
-    content:"";
-    position: absolute;
-    height: 0;
-    width: 0; 
-    top:0;
-    /* half height */
-    border-top: 5vh solid transparent;
-    border-bottom: 5vh solid transparent; 
-}
-.hexagon::before {
-    left:-25px;
-    border-right:25px solid yellow; 
-}
-.hexagon::after {
-    right:-25px;
-    border-left:25px solid yellow; 
 }
 .content {
     position: relative;
     bottom: 300px;
     left: 400px;
 }
-
-#begin{
+.begin{
+    margin: 0;
+    user-select: none;
     order: 1
 }
-#end{
+.end{
+    margin: 0;
+    user-select: none;
     order: 3
 }
