@@ -1,0 +1,103 @@
+body {
+    background-color: #E5E0FF;
+    margin: 0;
+    padding: 0;
+}
+
+.block-bar {
+    height: 96vh;
+    width: 15.2vw;
+    background-color: #7286D3;
+    padding: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+}
+.block-holder{
+    min-height: 50px;
+    min-width: 50px;
+    background: red;
+    order: 2;
+}
+.chart-section{
+    min-height: 100vh;
+    width: 85vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    flex-flow: column;
+    background: white;
+    position: relative;
+    left: 17vw;
+}
+.block {
+    margin: 4vh 2vw;
+    width: 10vw;
+    height: 10vh;
+    display: flex;
+    background: yellow;    
+    justify-content: center;
+    align-items: center;
+}
+.parallelogram {
+    transform: skewX(-10deg);
+    order: 1;
+}
+.rectangle{
+    order: 2;
+}
+.rhombus {
+    width: 14vw;
+    height: 14vh;
+    background: url(image/rhombus.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    order: 3;
+}
+
+.oval {
+    height: 13vh;
+    border-radius: 50%;
+    order: 4;
+}
+
+.hexagon {
+    position:relative;
+    box-sizing: border-box;
+    border: 1px solid yellow;
+    order: 5;
+}
+.hexagon::before, .hexagon::after {
+    content:"";
+    position: absolute;
+    height: 0;
+    width: 0; 
+    top:0;
+    /* half height */
+    border-top: 5vh solid transparent;
+    border-bottom: 5vh solid transparent; 
+}
+.hexagon::before {
+    left:-25px;
+    border-right:25px solid yellow; 
+}
+.hexagon::after {
+    right:-25px;
+    border-left:25px solid yellow; 
+}
+.content {
+    position: relative;
+    bottom: 300px;
+    left: 400px;
+}
+
+#begin{
+    order: 1
+}
+#end{
+    order: 3
+}

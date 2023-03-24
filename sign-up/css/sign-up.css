@@ -68,7 +68,7 @@
 }
 
 /*Button*/
-.form button {
+.form input[type="submit"] {
     background-color: #0066ff;
     color: #fff;
     border: 0;
@@ -80,6 +80,6 @@
     transition: background-color .3s ease;
 }
 
-.form button:hover {
+.form input[type="submit"]:hover {
     background-color: #005ce6;
 }
