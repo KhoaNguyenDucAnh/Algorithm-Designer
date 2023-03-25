@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-    <link rel="stylesheet" href="account/css/personal.css" />
+    <link rel="stylesheet" href="account/css/account.css" />
 </head>
 <body>
     <div class="menuBar">
         <a href="home.html">Home</a>
         <div class="credential">
-            <a href="login.html">Sign out</a>
+            <a href="home.html" onclick="sessionStorage.clear()">Sign out</a>
+            <a href="login.html" >Sign in</a>
         </div>
     </div>
     <div>
@@ -23,9 +24,5 @@
     <input type="text" id="projectName" placeholder="Name"/> 
     <button class="addProject" onclick="addAlgorithm()">Add project</button>
     <script src="account/js/account.js"></script>
-    <link rel="stylesheet" href="account/css/account.css" />
-    <title>Your project</title>
-        <div class="credential">
-    </div>
 </body>
 </html>

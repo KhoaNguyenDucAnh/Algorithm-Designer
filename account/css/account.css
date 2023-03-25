@@ -8,7 +8,7 @@ body {
 .menuBar {
     background-color: black;
     color: white;
-    height: 8vh;
+    height: 7vh;
     justify-content: space-between;
     display: flex;
 }
