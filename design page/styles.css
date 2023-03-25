@@ -1,0 +1,140 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.block-bar {
+    height: 96vh;
+    width: 15.2vw;
+    background-color: #7286D3;
+    padding: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 2;
+}
+.block-holder{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    border: 2px solid black;
+    order: 2;
+    margin: 0;
+}
+.space{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    border: 2px solid black;
+    order: 2;
+    margin: 0;
+    flex: 4;
+}
+.code-block{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    margin: 0;
+    flex-direction: column;
+    border: 2px solid black;
+    flex: 1;
+}
+.branch-container{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    margin: 0;
+    border: 2px solid black;
+}
+.block-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    border: 2px solid black;
+}
+.branch-statement{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.chart-section{
+    min-height: 100vh;
+    min-width: 83vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    flex-flow: column;
+    background: white;
+    position: relative;
+    left: 17vw;
+    z-index: 1;
+}
+.block {
+    margin: 4vh 2vw;
+    width: 10vw;
+    height: 10vh;
+    display: flex;
+    background: yellow;    
+    justify-content: center;
+    align-items: center;
+}
+.parallelogram {
+    transform: skewX(-10deg);
+    order: 1;
+}
+.rectangle{
+    order: 2;
+}
+.rhombus {
+    width: 14vw;
+    height: 14vh;
+    background: url(image/rhombus.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    order: 3;
+}
+
+.oval {
+    height: 13vh;
+    border-radius: 50%;
+    order: 4;
+}
+
+.hexagon { 
+    margin: 4vh 3vw;
+    width: 13vw;
+    background: url(image/hexagon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    order: 5;
+}
+.content {
+    position: relative;
+    bottom: 300px;
+    left: 400px;
+}
+.begin{
+    margin: 0;
+    user-select: none;
+    order: 1
+}
+.end{
+    margin: 0;
+    user-select: none;
+    order: 3
+}
