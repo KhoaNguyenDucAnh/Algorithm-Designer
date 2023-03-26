@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/api/v1/algorithms/";
+const url = "https://1f9dd58e-88c5-46df-854d-280aa21a799b.mock.pstmn.io/api/v1/algorithms/";
 const username = sessionStorage.getItem("username");
 const usernameId = sessionStorage.getItem("usernameId");
 const algorithm = document.getElementById("algorithm");
@@ -23,7 +23,7 @@ function renderAlgorithm() {
             let li = document.createElement("li");
             let a = document.createElement("a");
             a.innerText = element.name;
-            a.href = "http://localhost:8080/design/" + element.id + ".html";
+            a.href = "http://127.0.0.1:5500/design/" + element.id + ".html";
             li.appendChild(a);
             algorithm.appendChild(li);
         })
@@ -55,8 +55,8 @@ function addAlgorithm(){
     .then(function(data) {
         let li = document.createElement("li");
         let a = document.createElement("a");
-        a.innerText = element.name;
-        a.href = "http://localhost:8080/design/" + element.id + ".html";
+        a.innerText = data.name;
+        a.href = "http://127.0.0.1:5500/design/" + data.id + ".html";
         li.appendChild(a);
         algorithm.appendChild(li);
     })
