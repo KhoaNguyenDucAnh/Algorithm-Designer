@@ -1,4 +1,4 @@
-const url = "https://1f9dd58e-88c5-46df-854d-280aa21a799b.mock.pstmn.io/api/v1/algorithms/";
+const url = "http://localhost:8080/api/v1/algorithms/";
 const username = sessionStorage.getItem("username");
 const usernameId = sessionStorage.getItem("usernameId");
 const algorithm = document.getElementById("algorithm");
@@ -24,10 +24,12 @@ function renderAlgorithm() {
             let a = document.createElement("a");
             let button = document.createElement("button");
             a.innerText = element.name;
-            a.href = "http://127.0.0.1:5500/design/" + element.id + ".html";
-            button.innerText = "Delete me";
-            button.onclick = deleteAlgorithm;
+            a.href = url + element.id; 
             button.className = "deleteButton";
+            button.innerText = "Delete me";
+            button.addEventListener("click", function() {
+                deleteAlgorithm(element.id)
+            })
             li.appendChild(a);
             li.appendChild(button);
             algorithm.appendChild(li);
@@ -35,15 +37,9 @@ function renderAlgorithm() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-    renderUsername();
-    renderAlgorithm();
-});
-
-function deleteAlgorithm(){
-    let Algoid = 2;
-    fetch(url+'/'+Algoid, {
-        method: "POST",
+function deleteAlgorithm(id){
+    fetch(url + id, {
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
@@ -52,13 +48,13 @@ function deleteAlgorithm(){
         return response.json();
     })
     .then(function(data) {
-        renderAlgorithm();  
-    })
+        renderAlgorithm();
+    });
 }
 
 function addAlgorithm(){
-    var name = document.querySelector("#projectName").value;
-    fetch(url, {
+    let name = document.querySelector("#projectName").value;
+    fetch(url.slice(0, -1), {
         method: "POST",
         body: JSON.stringify({
             name: name,
@@ -75,16 +71,11 @@ function addAlgorithm(){
         return response.json();
     })
     .then(function(data) {
-        let li = document.createElement("li");
-        let a = document.createElement("a");
-        let button = document.createElement("button");
-        a.innerText = data.name;
-        button.innerText = "Delete me";
-        button.onclick = deleteAlgorithm;
-        button.className = "deleteButton";
-        a.href = "http://127.0.0.1:5500/design/" + data.id + ".html";
-        li.appendChild(a);
-        li.appendChild(button);
-        algorithm.appendChild(li);
-    })
+        renderAlgorithm();
+    });
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+    renderUsername();
+    renderAlgorithm();
+});
