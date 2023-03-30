@@ -1,12 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 body {
-    background-color: #146c94;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9eee8;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
 }
 
+.addProject{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+#projectName{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
 .menuBar {
-    background-color: black;
+    background-color: #a7d5d5;
     color: white;
     height: 7vh;
     justify-content: space-between;
@@ -28,7 +41,8 @@ body {
 }
 
 .menuBar a:hover{
-    background-color: white;
+    background-color: #93a8be;
+    border-radius: 3px;
     color: black;
 }
 
