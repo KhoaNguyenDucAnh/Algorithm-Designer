@@ -106,13 +106,6 @@ p {
     right: 0;
     z-index: 1;
 }
-.logo {
-    height: 70px;
-    width: 70px;
-    margin: 10px;
-    /* position: absolute; */
-    left: 20px;
-}
 .member {
     display: inline-block;
     margin: 10px 60px;
@@ -160,4 +153,15 @@ p {
     position: absolute;
     left: 75vw;
     top: 20vh;
+}
+
+.logo-box{
+    width: 100px;
+    height: 100px;
+}
+
+.logo-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }

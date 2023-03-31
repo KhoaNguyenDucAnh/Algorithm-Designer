@@ -9,20 +9,26 @@
 </head>
 <body>
     <div class="menuBar">
-        <a href="home.html">Home</a>
+        <a class= "goHome" href="home.html">Home</a>
         <div class="credential">
-            <a href="home.html" onclick="sessionStorage.clear()">Sign out</a>
+            <h3 id="username"></h1>
+            <a  href="home.html" onclick="sessionStorage.clear()">Sign out</a>
             <a href="login.html" >Sign in</a>
         </div>
     </div>
-    <div>
-        <h1 id="username"></h1>
+    <div class="wrapper">
+        <h1>My Projects</h1>
+        <div class="addnewProject">
+            <div class="Projectname">
+                <input type="text" id="projectName" placeholder="Name"/> 
+                <button class="addProject" onclick="addAlgorithm()">Add project</button>
+            </div>
+            <button class="CreateProject" onclick="Showbar()">CREATE A NEW PROJECT</button>
+        </div>
     </div>
-    <div>
+        <div>
         <ul id="algorithm"></ul>
     </div>
-    <input type="text" id="projectName" placeholder="Name"/> 
-    <button class="addProject" onclick="addAlgorithm()">Add project</button>
     <script src="account/js/account.js"></script>
 </body>
 </html>

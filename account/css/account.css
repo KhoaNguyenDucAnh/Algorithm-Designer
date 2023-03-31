@@ -1,21 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+
+
 body {
-    background-color: #146c94;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9eee8;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
 }
 
+.addProject{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+#projectName{
+    font-family: inherit;
+    width: 50%;
+    border: 0;
+    border-bottom: 2px solid #93a8be;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #93a8be;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#projectName:focus{
+    padding-bottom: 6px;  
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #93a8be, #bad5f0) 1;
+    border-image-slice: 1;
+}
+
+#projectName:focus::placeholder{
+    color: transparent;
+    transition: 0.3s;
+}
+
 .menuBar {
-    background-color: black;
+    background-color: #a7d5d5;
     color: white;
     height: 7vh;
     justify-content: space-between;
     display: flex;
+    text-align: center;
 }
 
 .credential{
     display: flex;
     justify-content: space-between;
+    margin: auto 10px;
+}
+
+#username{
+    margin: auto;
+    padding: 10px;
+    padding-top: 15px;
+    font-size: 20px;
 }
 
 .menuBar a {
@@ -23,15 +68,109 @@ body {
     color: white;
     text-decoration: none;
     padding: 10px;
+    padding-top: 15px;
     font-size: 20px;
     font-weight: bold;
+    transition: 0.5s;
 }
 
 .menuBar a:hover{
-    background-color: white;
+    background-color: #93a8be;
+    border-radius: 3px;
     color: black;
 }
 
 .deleteButton{
+    margin: auto 10px;
+    background-color: #bad5f0;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: bold;
+    color:white;
+    
+    border:0;
+    height: 30px;
+    width: 90px;
+    transition: 0.5s;
+    text-align: center;
+}
+.deleteButton:hover{
+    background-color: #f73838;
+}
+
+#algorithm li a{
+    /* background-color: #93a8be; */
+    margin:auto;
     margin-left: 10px;
+    color: black;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.addnewProject{
+    display: flex;
+}
+
+.Projectname{
+    margin: auto 10px;    
+    display: none;
+}
+
+.CreateProject{
+    margin: auto 10px;
+    background-color: #bd4e25;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color:white;
+    padding: 10px;
+    border:0;
+    height: 50%;
+    transition: 0.5s;
+}
+
+.addProject{
+    margin: auto 10px;
+    background-color: #bd4e25;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color:white;
+    padding: 10px;
+    border:0;
+    height: 50%;
+    transition: 0.5s;
+}
+
+.addProject:hover{
+    background-color: #93a8be;
+}
+
+.CreateProject:hover{
+    background-color: #93a8be;
+}
+
+.aProject{
+    background-color: #fffaed;
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 3px 3px 5px rgb(192, 192, 192);
+    border-radius: 3px;
+    align-items: center;
+}
+
+.project{
+    font-style: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+ul{
+    list-style-type: none;
 }
