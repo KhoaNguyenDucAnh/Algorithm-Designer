@@ -90,9 +90,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function Showbar(){
     let showBtn = document.querySelector(".CreateProject");
-    showBtn.addEventListener("click",() =>{
-        let addbar = document.querySelector(".Projectname");
-        addbar.style.display = "block";
-        showBtn.style.display = "none";
-    });
+    let addbar = document.querySelector(".Projectname");
+    addbar.style.display = "block";
+    showBtn.style.display = "none";
 }

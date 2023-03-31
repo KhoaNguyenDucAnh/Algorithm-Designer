@@ -47,6 +47,7 @@ body {
     height: 7vh;
     justify-content: space-between;
     display: flex;
+    text-align: center;
 }
 
 .credential{
@@ -58,6 +59,7 @@ body {
 #username{
     margin: auto;
     padding: 10px;
+    padding-top: 15px;
     font-size: 20px;
 }
 
@@ -66,6 +68,7 @@ body {
     color: white;
     text-decoration: none;
     padding: 10px;
+    padding-top: 15px;
     font-size: 20px;
     font-weight: bold;
     transition: 0.5s;
@@ -78,24 +81,28 @@ body {
 }
 
 .deleteButton{
-    margin: auto 0px;
+    margin: auto 10px;
     background-color: #bad5f0;
     border-radius: 100px;
     font-size: 10px;
     font-weight: bold;
     color:white;
-    padding: 10px;
+    
     border:0;
     height: 30px;
     width: 90px;
     transition: 0.5s;
+    text-align: center;
 }
 .deleteButton:hover{
-    background-color: #93a8be;
+    background-color: #f73838;
 }
 
 #algorithm li a{
     /* background-color: #93a8be; */
+    margin:auto;
+    margin-left: 10px;
+    color: black;
 }
 
 .wrapper{
@@ -114,7 +121,7 @@ body {
 
 .CreateProject{
     margin: auto 10px;
-    background-color: #bad5f0;
+    background-color: #bd4e25;
     border-radius: 5px;
     font-size: 10px;
     font-weight: bold;
@@ -127,7 +134,7 @@ body {
 
 .addProject{
     margin: auto 10px;
-    background-color: #bad5f0;
+    background-color: #bd4e25;
     border-radius: 5px;
     font-size: 10px;
     font-weight: bold;
@@ -148,7 +155,7 @@ body {
 
 .aProject{
     background-color: #fffaed;
-    width: 20%;
+    width: 50%;
     height: 50px;
     display: flex;
     justify-content: space-between;
