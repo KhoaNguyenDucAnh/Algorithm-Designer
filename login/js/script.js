@@ -1,4 +1,4 @@
-const url = "https://1f9dd58e-88c5-46df-854d-280aa21a799b.mock.pstmn.io/api/v1/accounts/login";
+const url = "http://localhost:8080/api/v1/accounts/login";
 var form = document.querySelector(".form");
 
 function handleLogin(event) {

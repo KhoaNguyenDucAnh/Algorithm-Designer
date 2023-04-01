@@ -123,7 +123,7 @@ p{
 .rhombus {
     width: 2vw;
     height: 14vh;
-    background: url(image/rhombus.png);
+    background: url(../resource/rhombus.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -145,7 +145,7 @@ p{
 .hexagon { 
     margin: 4vh 0;
     width: 13vw;
-    background: url(image/hexagon.png);
+    background: url(../resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -169,7 +169,7 @@ p{
 .while{
     margin: 4vh 0;
     width: 13vw;
-    background: url(image/hexagon.png);
+    background: url(../resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -178,7 +178,7 @@ p{
 .for{
     margin: 4vh 3vw;
     width: 13vw;
-    background: url(image/hexagonred.png);
+    background: url(../resource/hexagonred.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
