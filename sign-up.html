@@ -61,7 +61,7 @@
         Validator.isRequired('#password_confirmation'),
         Validator.isConfirmed('#password_confirmation', function () {
           return document.querySelector('#form #password').value;
-        }, 'Mật khẩu nhập lại không chính xác')
+        }, 'Password do not match')
       ],
     });
   </script>
