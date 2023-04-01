@@ -1,17 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 * {
     caret-color: transparent;
 }
 
 body {
+    font-family: 'Montserrat', sans-serif;
     background-color: black;
     margin: 0;
     padding: 0;
+    font-weight: bold;
+    font-size: large;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
 p{
     margin: 10px;
 }
 
 .block-bar {
+    
     height: 100%;
     width: 15.2vw;
     background-color: #7286D3;
@@ -22,8 +35,13 @@ p{
     flex-direction: column;
     position: fixed;
     z-index: 2;
-    overflow-y: auto;
+    overflow-y: scroll; 
 }
+
+.block-bar::-webkit-scrollbar {
+    display: none;
+  }
+
 .chart-section{
     min-height: 100vh;
     min-width: 83vw;
@@ -388,6 +406,7 @@ p{
     top: 50px;
     left: 5%;
     caret-color: auto;
+    resize:none;
 }
 .typeLabel{
     position: absolute;
