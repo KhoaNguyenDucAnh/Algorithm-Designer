@@ -1,6 +1,5 @@
 const url = "http://localhost:8080/api/v1/algorithms/";
 const username = sessionStorage.getItem("username");
-const usernameId = sessionStorage.getItem("usernameId");
 const algorithm = document.getElementById("algorithm");
 
 function renderUsername() {
@@ -63,9 +62,8 @@ function addAlgorithm(){
         body: JSON.stringify({
             name: name,
             account: {
-                id: usernameId,
+                username: username,
             }
-
         }),
         headers: {
             "Content-Type": "application/json"

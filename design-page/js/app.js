@@ -221,19 +221,19 @@ forForm.addEventListener('submit', function(event){
     currentTarget.setAttribute(
         'declareStatement',
         JSON.stringify({
-            StatementType: "declare", 
+            StatementType: "Declaration", 
             type: forDatatype,
             name: forVariable,
-            next: null
+            nextStatement: null
         })
     )
     currentTarget.setAttribute(
         'assignStatement',
         JSON.stringify({
-            StatementType: "assign", 
+            StatementType: "Assignment", 
             name: forVariable,
             value: forStartValue,
-            next: null
+            nextStatement: null
         })
     )
 
@@ -242,10 +242,10 @@ forForm.addEventListener('submit', function(event){
     currentTarget.setAttribute(
         'forLoopStatement',
         JSON.stringify({
-            StatementType: "assign", 
+            StatementType: "Assignment", 
             name: forVariable,
             value: `${forVariable} ${forOperator} ${forStep}`,
-            next: null
+            nextStatement: null
         })
     )
 
@@ -405,17 +405,17 @@ function getKeyValue(node) {
         var value = {}
         switch (node.className) {
             case "input parallelogram block":
-                value["StatementType"] = "input"
+                value["StatementType"] = "Input"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
 
                 var inputVariable = node.getAttribute('name')
@@ -426,17 +426,17 @@ function getKeyValue(node) {
 
                 break
             case "output parallelogram block":
-                value["StatementType"] = "output"
+                value["StatementType"] = "Output"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
 
                 var outputExpression = node.getAttribute('name')
@@ -447,17 +447,17 @@ function getKeyValue(node) {
 
                 break
             case "declare rectangle block":
-                value["StatementType"] = "declare"
+                value["StatementType"] = "Declaration"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
                 
                 var declareDatatype = node.getAttribute('type')
@@ -473,17 +473,17 @@ function getKeyValue(node) {
                 
                 break
             case "assign rectangle block":
-                value["StatementType"] = "assign"
+                value["StatementType"] = "Assignment"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
 
                 var assignVariable = node.getAttribute('name')
@@ -499,39 +499,39 @@ function getKeyValue(node) {
 
                 break
             case "rhombus block":
-                value["StatementType"] = "if"
+                value["StatementType"] = "Conditional"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
                 var trueNode = node.parentNode.previousSibling.childNodes[1]
                 var falseNode = node.parentNode.nextSibling.childNodes[1]
                 if(trueNode.childNodes[1] === undefined){
-                    value["true"] = null
+                    value["trueStatement"] = null
                 } else {
                     if(trueNode.childNodes[1].firstChild.className.includes('block')){
                         var nextID = trueNode.childNodes[1].firstChild.id
                     } else {
                         var nextID = trueNode.childNodes[1].firstChild.childNodes[1].firstChild.id
                     }
-                    value["true"] = nextID
+                    value["trueStatement"] = nextID
                 } 
                 if(falseNode.childNodes[1] === undefined){
-                    value["false"] = null
+                    value["falseStatement"] = null
                 } else {
                     if(falseNode.childNodes[1].firstChild.className.includes('block')){
                         var nextID = falseNode.childNodes[1].firstChild.id
                     } else {
                         var nextID = falseNode.childNodes[1].firstChild.childNodes[1].firstChild.id
                     }
-                    value["false"] = nextID
+                    value["falseStatement"] = nextID
                 } 
 
                 var ifCondition = node.getAttribute('condition')
@@ -542,17 +542,17 @@ function getKeyValue(node) {
 
                 break
             case "while hexagon block":
-                value["StatementType"] = "while"
+                value["StatementType"] = "WhileLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
                 var loopBody = node.parentNode.nextSibling.childNodes[1]
                 if(loopBody.childNodes[1] === undefined){
@@ -574,17 +574,17 @@ function getKeyValue(node) {
 
                 break
             case "for hexagon block":
-                value["StatementType"] = "for"
+                value["StatementType"] = "ForLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
-                    value["next"] = null
+                    value["nextStatement"] = null
                 } else {
                     if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     }
-                    value["next"] = nextID
+                    value["nextStatement"] = nextID
                 } 
                 var loopBody = node.parentNode.nextSibling.childNodes[1]
                 if(loopBody.childNodes[1] === undefined){

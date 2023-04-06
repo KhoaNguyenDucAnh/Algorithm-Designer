@@ -1,3 +1,25 @@
+const url = "http://localhost:8080/api/v1/users/login";
+var form = document.querySelector(".form");
+
+function handleSignup(event) {
+  event.preventDefault();
+  const data = {
+    name:     form.fullname.value,
+    username: form.email.value,
+    password: form.password.value
+  };
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+}
+
+
+form.addEventListener("submit", handleSignup);
+
 function Validator(options) {
   function getParent(element, selector) {
       while (element.parentElement) {
@@ -114,26 +136,3 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
       }
   }
 }
-
-const url = "https://1f9dd58e-88c5-46df-854d-280aa21a799b.mock.pstmn.io/api/v1/accounts/login";
-var form = document.querySelector(".form");
-
-function handleSignup(event) {
-  event.preventDefault();
-  const data = {
-    name:     form.fullname.value,
-    username: form.email.value,
-    password: form.password.value
-  };
-  fetch(url, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  
-}
-
-
-form.addEventListener("submit", handleSignup);
