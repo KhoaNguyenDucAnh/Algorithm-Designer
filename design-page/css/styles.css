@@ -96,7 +96,7 @@ p{
     background: linear-gradient(#5f1eec, #ea1737);
 }
 .cpp{
-    background: url(image/c++.png);
+    background: url(../resource/c++.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -297,7 +297,7 @@ p{
 }
 .rhombus {
     min-height: 78px;
-    background: url(image/rhombus.png);
+    background: url(../resource/rhombus.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -319,7 +319,7 @@ p{
 .hexagon { 
     margin: 4vh 0;
     min-width: 150px;
-    background: url(image/hexagon.png);
+    background: url(../resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -342,7 +342,7 @@ p{
 }
 .while{
     margin: 4vh 0;
-    background: url(image/hexagon.png);
+    background: url(../resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -351,7 +351,7 @@ p{
 .for{
     margin: 4vh 3vw;
     width: 13vw;
-    background: url(image/hexagonred.png);
+    background: url(../resource/hexagonred.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
