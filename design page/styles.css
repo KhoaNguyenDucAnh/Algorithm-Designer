@@ -1,0 +1,697 @@
+* {
+    caret-color: transparent;
+}
+
+body {
+    background-color: #E9F8F9;
+    margin: 0;
+    padding: 0;
+}
+p{
+    margin: 10px;
+}
+.toolbar{
+    width: 100%;
+    height: 11%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background: lightblue;
+    z-index: 3;
+}
+.runPopup{
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    position: fixed;
+}
+.runPopupContent{
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    height: 80%;
+    background-color: rgb(139, 240, 157);
+    text-align: center;
+    border: 1px solid black;
+}
+.runCloseButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2.2vh;
+    padding: 1vh 0.7vw;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+.runCloseButton:hover{
+    background-color: red;
+}
+.runBlockName{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 4.6vh;
+}
+.run-button {
+    background: linear-gradient(#bae609, #4CAF50);
+    color: white;
+    border: none;
+    padding: 2vh 2.5vh;
+    border-radius: 2vh;
+    font-size: 0;
+    cursor: pointer;
+    margin: 1vw auto;
+}
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 2vh solid transparent;
+    border-bottom: 2vh solid transparent;
+    border-left: 3vh solid white;
+    display: inline-block;
+}
+.run-button:hover{
+    background: linear-gradient(#09d8ab, #874caf);
+}
+.save-button {
+    background: linear-gradient(#7149C6, #FC2947);
+    margin: 1vw 1vw 1vw 35vw;
+    color: white;
+    border: none;
+    padding: 2vh 4vh;
+    border-radius: 1vh;
+    font-size: 3vh;
+    cursor: pointer;
+}
+.save-button:hover{
+    background: linear-gradient(#5f1eec, #ea1737);
+}
+.cpp{
+    background: url(image/c++.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    border: none;
+    height: 7vh;
+    width: 3vw;
+    cursor: pointer;
+    margin: 1vw 35vw 1vw 1vw;
+}
+.cpp:hover{
+    background-color: #bae609;
+}
+.block-bar {
+    height: 85%;
+    width: 15.2vw;
+    background-color: #C1AEFC;
+    padding: 2vh;
+    padding-top: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 2;
+    overflow-y: auto;
+}
+.chart-section{
+    min-height: 400px;
+    min-width: 83vw;
+    padding-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    flex-flow: column;
+    background: #E9F8F9;
+    position: relative;
+    left: 17vw;
+    
+    z-index: 1;
+}
+.holder{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    min-width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border: 2px solid black; */
+    order: 2;
+    margin: 0;
+}
+.space{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    position: relative;
+    /* border: 2px solid black; */
+    order: 2;
+    margin: 0;
+    flex: 4;
+}
+.two{
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 78px;
+    max-height: 78px;
+}
+.one{
+    align-self: stretch;
+    min-height: 50px;
+    max-height: 50px;
+}
+.three{
+    align-self: stretch;
+    max-height: 50px;
+}
+.five{
+    max-height: 50px;
+    align-self: stretch;
+}
+.seven{
+    min-height: 78px;
+    max-height: 78px;
+    align-self: stretch;
+}
+.nine{
+    min-height: 78px;
+    max-height: 78px;
+    align-self: stretch;
+}
+.verticalJoint{
+    position: absolute;
+    background: black;
+    width: 4px;
+    height: 50%;
+    right: calc(50% - 1.5px);
+    bottom: 0;
+}
+.horizontalJoint{
+    position: absolute;
+    background: black;
+    width: calc(50% + 2.2px);
+    height: 3.6px;
+    right: 0;
+    bottom: calc(50% - 1.6px);
+}
+.roundJoint{
+    position: absolute;
+    width: 14px;
+    height: 13px;
+    background: blueviolet;
+    border-radius: 7px;
+    left: calc(50% - 7px);
+    top: calc(50% - 6.5px);
+}
+.blackSpace{
+    background: black;
+    position: absolute;
+    height: calc(50% + 1.7px);
+    width: calc(50% + 1.7px);
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+.transparentSpace{
+    background: white;
+    position: absolute;
+    height: calc(50% - 1.7px);
+    width: calc(50% - 1.7px);
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+.codeBlock{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    margin: 0;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    flex: 1;
+}
+.branch-container{
+    min-height: 50px;
+    min-width: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    margin: 0;
+    /* border: 2px solid black; */
+}
+.column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    /* border: 2px solid black; */
+}
+.branch-statement{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.trueLabel{
+    position: absolute;
+    top: 27%;
+    right: 3px;
+}
+.falseLabel{
+    position: absolute;
+    top: 27%;
+    left: 3px;
+}
+.block {
+    margin: 3vh 0;
+    min-width: 135px;
+    min-height: 50px;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.parallelogram {
+    transform: skewX(-10deg);
+}
+.rhombus {
+    min-height: 78px;
+    background: url(image/rhombus.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    order: 5;
+}
+
+.oval {
+    margin: 4vh 2vw;
+    width: 10vw;
+    min-height: 72px;
+    display: flex;
+    background: #FFB26B;    
+    justify-content: center;
+    align-items: center;
+    height: 13vh;
+    border-radius: 50%;
+}
+
+.hexagon { 
+    margin: 4vh 0;
+    min-width: 150px;
+    background: url(image/hexagon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.input{
+    background: #30E3DF;
+    order: 1;
+}
+.output{
+    background: #43f874;
+    order: 2;
+}
+.declare{
+    background: #FEFF86;
+    order: 3;
+}
+.assign{
+    background: #f6d347;
+    order: 4;
+}
+.while{
+    margin: 4vh 0;
+    background: url(image/hexagon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    order: 6;
+}
+.for{
+    margin: 4vh 3vw;
+    width: 13vw;
+    background: url(image/hexagonred.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    order: 7;
+}
+.content {
+    position: relative;
+    bottom: 300px;
+    left: 400px;
+}
+.begin{
+    margin: 0;
+    user-select: none;
+    order: 1
+}
+.end{
+    margin: 0;
+    user-select: none;
+    order: 3
+}
+.popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    position: fixed;
+}
+
+.popup-content {
+    position: absolute;
+    top: 28%;
+    left: 33%;
+    width: 34%;
+    height: 44%;
+    background-color: transparent;
+    text-align: center;
+    border: 1px solid black;
+}
+.short{
+    top: 28%;
+    height: 44%;
+}
+.medium{
+    top: 22.5%;
+    height: 55%;
+}
+.tall{
+    top: 17%;
+    height: 66%;
+}
+
+.wide{
+    left: 30%;
+    width: 44%;
+}
+
+.close-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+.close-popup:hover {
+    background-color: red;
+}
+
+.short-blockName{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 11.3%;
+}
+.short-blockDescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+.short-body{
+    background-color: white;
+    width: 100%;
+    height: 58.6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.medium-blockName{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+.medium-blockDescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    width: 100%;
+    height: 25%;
+    position: relative;
+}
+.medium-body{
+    background-color: white;
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tall-blockName{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 8%;
+}
+.tall-blockDescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    width: 100%;
+    height: 22%;
+    position: relative;
+}
+.tall-body{
+    background-color: white;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.description{
+    position: absolute;
+    height: 90%;
+    width: 63%;
+    right: 10px;
+    text-align: left;
+    font-size: 100%;
+    overflow: hidden;
+}
+.display{
+    position: absolute;
+    min-height: 0;
+    min-width: 0;
+    height: 70%;
+    width: 30%;
+    margin: 10px;
+}
+.display2{
+    position: absolute;
+    height: 80%;
+    width: 25%;
+    min-height: 0;
+    min-width: 0;
+    margin: 0;
+    left: 3%;
+}
+.inputForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.outputForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.declareForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.assignForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.ifForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.whileForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.forForm{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.popupLabel{
+    position: absolute;
+    left: 5%;
+    top: 10%;
+}
+.variableBar{
+    position: absolute;
+    width: 40%;
+    height: 8%;
+    top: 21%;
+    left: 5%;
+    caret-color: auto;
+}
+.okButton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 3%;
+    width: 70px;
+    height: 30px;
+}
+.outputTextarea{
+    position: absolute;
+    top: 21%;
+    left: 5%;
+    height: 50%;
+    width: 90%;
+    caret-color: auto;
+}
+.typeLabel{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+}
+.typeString{
+    position: absolute;
+    top: 60%;
+    left: 7%;
+}
+.typeInteger{
+    position: absolute;
+    top: 60%;
+    left: 30%;
+}
+.typeDouble{
+    position: absolute;
+    top: 60%;
+    left: 53%;
+}
+.typeBoolean{
+    position: absolute;
+    top: 60%;
+    left: 76%;
+}
+.equalSign{
+    position: absolute;
+    top: 21%;
+    left: 40%;
+}
+.expressionLabel{
+    position: absolute;
+    top: 10%;
+    left: 45%;
+}
+.forTypeLabel{
+    position: absolute;
+    top: 10%;
+    left: 52%;
+}
+.forTypeInteger{
+    position: absolute;
+    top: 21%;
+    left: 56%;
+}
+.forTypeDouble{
+    position: absolute;
+    top: 21%;
+    left: 74%;
+}
+.startValueLabel{
+    position: absolute;
+    left: 5%;
+    top: 35%;
+}
+.endValueLabel{
+    position: absolute;
+    left: 52%;
+    top: 35%;
+}
+.startValueBar{
+    position: absolute;
+    caret-color: auto;
+    left: 5%;
+    top: 45%;
+    height: 9%;
+    width: 40%;
+}
+.endValueBar{
+    position: absolute;
+    caret-color: auto;
+    left: 52%;
+    top: 45%;
+    height: 9%;
+    width: 40%;
+}
+.forDirectionLabel{
+    position: absolute;
+    left: 52%;
+    top: 60%;
+}
+.forIncreaseDirection{
+    position: absolute;
+    top: 70%;
+    left: 56%;
+}
+.forDecreaseDirection{
+    position: absolute;
+    top: 70%;
+    left: 76%;
+}
+.forStepLabel{
+    position: absolute;
+    left: 5%;
+    top: 60%;
+}
+.forStepBar{
+    position: absolute;
+    caret-color: auto;
+    left: 5%;
+    top: 70%;
+    height: 9%;
+    width: 40%;
+}
