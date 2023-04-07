@@ -1,6 +1,5 @@
-const url = "https://1f9dd58e-88c5-46df-854d-280aa21a799b.mock.pstmn.io/api/v1/algorithms/";
+const url = "http://localhost:8080/api/v1/algorithms/";
 const username = sessionStorage.getItem("username");
-const usernameId = sessionStorage.getItem("usernameId");
 const algorithm = document.getElementById("algorithm");
 
 function renderUsername() {
@@ -63,9 +62,8 @@ function addAlgorithm(){
         body: JSON.stringify({
             name: name,
             account: {
-                id: usernameId,
+                username: username,
             }
-
         }),
         headers: {
             "Content-Type": "application/json"
@@ -78,9 +76,10 @@ function addAlgorithm(){
         renderAlgorithm();
     });
     let addbar = document.querySelector(".Projectname");
-    addbar.style.display = "none";
     let showBtn = document.querySelector(".CreateProject");
+    addbar.style.display = "none";
     showBtn.style.display = "block";
+    document.querySelector("#projectName").value= "";
 }
 
 document.addEventListener("DOMContentLoaded", function(){
