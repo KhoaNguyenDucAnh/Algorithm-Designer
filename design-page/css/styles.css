@@ -8,7 +8,12 @@ body {
     padding: 0;
 }
 p{
-    margin: 10px;
+    margin: 1vh;
+}
+input[type="radio" i] {
+    margin: 1vh 1vh 0 1.5vh;
+    height: 3vh;
+    border: 0;
 }
 .toolbar{
     width: 100%;
@@ -103,12 +108,21 @@ p{
     text-align: center;
     border: 1px solid black;
 }
+.cppPopupBody{
+    width: 100%;
+    height: 94%;
+    overflow-y: auto;
+}
+.cppForm{
+    width: 100%;
+    height: 100%;
+}
 .cppCloseButton{
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 2.2vh;
-    padding: 1vh 0.7vw;
+    font-size: 100%;
+    padding: 0.4% 0.7%;
     background-color: white;
     color: black;
     border: none;
@@ -123,7 +137,7 @@ p{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 4.6vh;
+    height: 6%;
 }
 .run-button {
     background: linear-gradient(#bae609, #4CAF50);
@@ -160,7 +174,7 @@ p{
     background: linear-gradient(#5f1eec, #ea1737);
 }
 .cpp{
-    background: url(image/c++.png);
+    background: url(/resource/c++.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -348,21 +362,22 @@ p{
     top: 27%;
     left: 3px;
 }
-.block {
+.block{
     margin: 3vh 0;
-    min-width: 135px;
-    min-height: 50px;
+    min-width: 11vw;
+    min-height: 9vh;
     display: flex;   
     justify-content: center;
     align-items: center;
     position: relative;
+    font-size: 3vh;
 }
 .parallelogram {
     transform: skewX(-10deg);
 }
 .rhombus {
-    min-height: 78px;
-    background: url(image/rhombus.png);
+    min-height: 14.1vh;
+    background: url(/resource/rhombus.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -371,20 +386,20 @@ p{
 
 .oval {
     margin: 4vh 2vw;
-    width: 10vw;
     min-height: 72px;
+    min-width: 150px;
     display: flex;
     background: #FFB26B;    
     justify-content: center;
     align-items: center;
-    height: 13vh;
     border-radius: 50%;
+    font-size: 100%;
 }
 
 .hexagon { 
     margin: 4vh 0;
-    min-width: 150px;
-    background: url(image/hexagon.png);
+    min-width: 12vw;
+    background: url(/resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -407,7 +422,7 @@ p{
 }
 .while{
     margin: 4vh 0;
-    background: url(image/hexagon.png);
+    background: url(/resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -415,7 +430,7 @@ p{
 }
 .for{
     margin: 4vh 3vw;
-    background: url(image/hexagonred.png);
+    background: url(/resource/hexagonred.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -456,7 +471,7 @@ p{
     height: 44%;
     background-color: transparent;
     text-align: center;
-    border: 1px solid black;
+    border: 0.1vh solid black;
 }
 .short{
     top: 28%;
@@ -480,11 +495,12 @@ p{
     position: absolute;
     top: 0;
     right: 0;
-    padding: 7px 10px;
+    padding: 1.5% 2.5%;
     background-color: white;
     color: black;
     border: none;
     cursor: pointer;
+    font-size: 2.5vh;
 }
 .close-popup:hover {
     background-color: red;
@@ -495,6 +511,7 @@ p{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 3vh;
     width: 100%;
     height: 11.3%;
 }
@@ -522,6 +539,7 @@ p{
     align-items: center;
     width: 100%;
     height: 10%;
+    font-size: 3vh;
 }
 .medium-blockDescription{
     display: flex;
@@ -531,6 +549,7 @@ p{
     width: 100%;
     height: 25%;
     position: relative;
+    font-size: 3vh;
 }
 .medium-body{
     background-color: #5BC0F8;
@@ -547,6 +566,7 @@ p{
     align-items: center;
     width: 100%;
     height: 8%;
+    font-size: 3vh;
 }
 .tall-blockDescription{
     display: flex;
@@ -569,13 +589,16 @@ p{
     position: absolute;
     height: 90%;
     width: 63%;
-    right: 10px;
+    right: 3%;
     text-align: left;
-    font-size: 100%;
+    font-size: 3vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+.desStatement{
+    font-size: 3vh;
 }
 .display{
     position: absolute;
@@ -583,7 +606,7 @@ p{
     min-width: 0;
     height: 70%;
     width: 30%;
-    margin: 10px;
+    margin: 1vw;
 }
 .display2{
     position: absolute;
@@ -633,6 +656,7 @@ p{
     position: absolute;
     left: 5%;
     top: 10%;
+    font-size: 3vh;
 }
 .variableBar{
     position: absolute;
@@ -640,15 +664,22 @@ p{
     height: 8%;
     top: 21%;
     left: 5%;
+    border: 0;
+    font-size: 3vh;
     caret-color: auto;
 }
 .okButton{
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 3%;
-    width: 70px;
-    height: 30px;
+    margin: 2%;
+    width: 15%;
+    height: 15%;
+    font-size: 3vh;
+    border: 0.1vh solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .outputTextarea{
     position: absolute;
@@ -656,67 +687,82 @@ p{
     left: 5%;
     height: 50%;
     width: 90%;
+    padding: 1vh;
+    border-width: 0;
     caret-color: auto;
+    font-size: 3vh;
 }
 .typeLabel{
     position: absolute;
     top: 45%;
     left: 5%;
+    font-size: 3vh;
 }
 .typeString{
     position: absolute;
     top: 60%;
     left: 7%;
+    font-size: 3vh;
 }
 .typeInteger{
     position: absolute;
     top: 60%;
     left: 30%;
+    font-size: 3vh;
 }
 .typeDouble{
     position: absolute;
     top: 60%;
     left: 53%;
+    font-size: 3vh;
 }
 .typeBoolean{
     position: absolute;
     top: 60%;
     left: 76%;
+    font-size: 3vh;
 }
 .equalSign{
     position: absolute;
     top: 21%;
     left: 40%;
+    font-size: 3vh;
 }
 .expressionLabel{
     position: absolute;
     top: 10%;
     left: 45%;
+    font-size: 3vh;
 }
 .forTypeLabel{
     position: absolute;
     top: 10%;
     left: 52%;
+    font-size: 3vh;
 }
 .forTypeInteger{
     position: absolute;
     top: 21%;
     left: 56%;
+    font-size: 3vh;
 }
 .forTypeDouble{
     position: absolute;
     top: 21%;
     left: 74%;
+    font-size: 3vh;
 }
 .startValueLabel{
     position: absolute;
     left: 5%;
     top: 35%;
+    font-size: 3vh;
 }
 .endValueLabel{
     position: absolute;
     left: 52%;
     top: 35%;
+    font-size: 3vh;
 }
 .startValueBar{
     position: absolute;
@@ -725,6 +771,7 @@ p{
     top: 45%;
     height: 9%;
     width: 40%;
+    font-size: 3vh;
 }
 .endValueBar{
     position: absolute;
@@ -733,26 +780,31 @@ p{
     top: 45%;
     height: 9%;
     width: 40%;
+    font-size: 3vh;
 }
 .forDirectionLabel{
     position: absolute;
     left: 52%;
     top: 60%;
+    font-size: 3vh;
 }
 .forIncreaseDirection{
     position: absolute;
     top: 70%;
     left: 56%;
+    font-size: 3vh;
 }
 .forDecreaseDirection{
     position: absolute;
     top: 70%;
     left: 76%;
+    font-size: 3vh;
 }
 .forStepLabel{
     position: absolute;
     left: 5%;
     top: 60%;
+    font-size: 3vh;
 }
 .forStepBar{
     position: absolute;
@@ -761,4 +813,5 @@ p{
     top: 70%;
     height: 9%;
     width: 40%;
+    font-size: 3vh;
 }

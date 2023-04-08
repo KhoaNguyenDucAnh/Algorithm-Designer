@@ -944,6 +944,10 @@ function addEventListener(node) {
                 currentTarget.parentNode.style.minHeight = currentTarget.offsetHeight + 'px'
                 currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
                 currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
+
+                currentTarget.style.minHeight = '78px'
+                currentTarget.style.minWidth = '150px'
+                currentTarget.style.fontSize = '100%'
             }
             else if(currentTarget.className.includes("hexagon")){
                 node.childNodes[1].remove()
@@ -1055,6 +1059,10 @@ function addEventListener(node) {
                 node.parentNode.insertBefore(bottomBlock, this.nextSibling)
                 node.parentNode.insertBefore(aboveBlock, this)
                 node.appendChild(loop)
+                
+                currentTarget.style.minHeight = '50px'
+                currentTarget.style.minWidth = '150px'
+                currentTarget.style.fontSize = '100%'
             }
             else
             {
@@ -1071,6 +1079,10 @@ function addEventListener(node) {
                 belowBlock.style.flex = '1'
                 node.parentNode.insertBefore(aboveBlock, this)
                 node.parentNode.insertBefore(belowBlock, this.nextSibling)
+
+                currentTarget.style.minHeight = '50px'
+                currentTarget.style.minWidth = '135px'
+                currentTarget.style.fontSize = '100%'
             }
             node.style.flex = ''
             if(currentBlock == parentPlace){
