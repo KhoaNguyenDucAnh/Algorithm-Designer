@@ -14,6 +14,10 @@ const runButton = document.querySelector('.run-button')
 const runPopup = document.querySelector('.runPopup')
 const runCloseButton = document.querySelector('.runCloseButton')
 const cppButton = document.querySelector('.cpp')
+const cppPopup = document.querySelector('.cppPopup')
+const cppCloseButton = document.querySelector('.cppCloseButton')
+const saveButton = document.querySelector('.save-button')
+const toolBar = document.querySelector('.toolbar')
 var body = document
 
 var currentTarget = null
@@ -34,12 +38,36 @@ const assignForm = document.querySelector('.assignForm')
 const ifForm = document.querySelector('.ifForm')
 const whileForm = document.querySelector('.whileForm')
 const forForm = document.querySelector('.forForm')
+const runForm = document.querySelector('.runForm')
 
+const terminal = document.querySelector('.terminal')
+
+saveButton.addEventListener('click', function(){
+    updateDict()
+})
 runButton.addEventListener('click', function(){
-    runPopup.style.display = 'block'
+    if(window.getComputedStyle(runPopup).getPropertyValue("display") == 'none'){
+        updateDict()
+        toolBar.style.pointerEvents = 'none'
+        runPopup.style.display = 'block'
+        var space = document.createElement("div")
+        space.classList.add('bigSpace')
+        dropPlace.appendChild(space)
+    }
+    terminal.focus()
 })
 runCloseButton.addEventListener('click', function(){
     runPopup.style.display = 'none'
+    toolBar.style.pointerEvents = 'auto'
+    dropPlace.removeChild(dropPlace.lastChild)
+    runForm.reset()
+})
+cppButton.addEventListener('click', function(){
+    updateDict()
+    cppPopup.style.display = 'block'
+})
+cppCloseButton.addEventListener('click', function(){
+    cppPopup.style.display = 'none'
 })
 
 inputForm.addEventListener('submit', function(event){
@@ -60,7 +88,6 @@ inputForm.addEventListener('submit', function(event){
     })
 
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 outputForm.addEventListener('submit', function(event){
@@ -82,7 +109,6 @@ outputForm.addEventListener('submit', function(event){
     })
 
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 declareForm.addEventListener('submit', function(event){
@@ -122,7 +148,6 @@ declareForm.addEventListener('submit', function(event){
     })
 
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 assignForm.addEventListener('submit', function(event){
@@ -147,7 +172,6 @@ assignForm.addEventListener('submit', function(event){
     })
 
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 ifForm.addEventListener('submit', function(event){
@@ -173,7 +197,6 @@ ifForm.addEventListener('submit', function(event){
     currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
     currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 whileForm.addEventListener('submit', function(event){
@@ -195,7 +218,6 @@ whileForm.addEventListener('submit', function(event){
     })
 
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 forForm.addEventListener('submit', function(event){
@@ -301,7 +323,6 @@ forForm.addEventListener('submit', function(event){
     })
 
     updateBranchWidth()
-    updateDict()
     updateBodyWidth()
 })
 
@@ -764,7 +785,7 @@ function addBackground(node){
 }
 
 function addEventListener(node) {
-    const dropFunction = function(e){
+    const dropFunction = function(){
         if(I && node.getAttribute('full') === null){
             inBody = true
             node.setAttribute('full', true)
@@ -1093,7 +1114,6 @@ function addEventListener(node) {
                 }
             }
             updateBranchWidth()
-            updateDict()
             updateBodyWidth()
             I = false
         }
@@ -1198,7 +1218,6 @@ parentPlace.addEventListener('drop', function(e){
         currentTarget.remove()
         updateBranchWidth()
         updateBodyWidth()
-        updateDict()
     }
 })
 

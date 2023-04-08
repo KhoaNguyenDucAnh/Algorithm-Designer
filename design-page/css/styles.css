@@ -19,22 +19,44 @@ p{
     background: lightblue;
     z-index: 3;
 }
-.runPopup{
-    display: none;
-    top: 0;
-    left: 0;
+.bigSpace{
+    height: 35vh;
+    order: 100000000;
+}
+.runForm{
+    width: 100%;
+    height: 90%;
+}
+.terminal{
+    background: #393646;
+    color: white;
+    font-size: 3.5vh;
+    caret-color: white;
+    padding: 10px;
     width: 100%;
     height: 100%;
+}
+.runPopup{
+    display: none;
+    bottom: 0;
+    right: 0;
+    left: 15.8vw;
+    width: 84vw;
+    height: 30vh;
     background-color: rgba(0,0,0,0.5);
     z-index: 3;
     position: fixed;
 }
+.runPopupBody{
+    width: 100%;
+    height: 100%;
+}
 .runPopupContent{
     position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 70%;
-    height: 80%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgb(139, 240, 157);
     text-align: center;
     border: 1px solid black;
@@ -54,6 +76,48 @@ p{
     background-color: red;
 }
 .runBlockName{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 4.6vh;
+}
+.cppPopup{
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    position: fixed;
+}
+.cppPopupContent{
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    height: 80%;
+    background-color: rgb(139, 240, 157);
+    text-align: center;
+    border: 1px solid black;
+}
+.cppCloseButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2.2vh;
+    padding: 1vh 0.7vw;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+.cppCloseButton:hover{
+    background-color: red;
+}
+.cppBlockName{
     background: white;
     display: flex;
     justify-content: space-between;
@@ -96,7 +160,7 @@ p{
     background: linear-gradient(#5f1eec, #ea1737);
 }
 .cpp{
-    background: url(../resource/c++.png);
+    background: url(image/c++.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -112,10 +176,10 @@ p{
 }
 .block-bar {
     height: 85%;
-    width: 15.2vw;
+    width: 14.2vw;
     background-color: #C1AEFC;
     padding: 2vh;
-    padding-top: 20vh;
+    padding-top: 18vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,6 +187,7 @@ p{
     position: fixed;
     z-index: 2;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 .chart-section{
     min-height: 400px;
@@ -297,7 +362,7 @@ p{
 }
 .rhombus {
     min-height: 78px;
-    background: url(../resource/rhombus.png);
+    background: url(image/rhombus.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -319,7 +384,7 @@ p{
 .hexagon { 
     margin: 4vh 0;
     min-width: 150px;
-    background: url(../resource/hexagon.png);
+    background: url(image/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -342,7 +407,7 @@ p{
 }
 .while{
     margin: 4vh 0;
-    background: url(../resource/hexagon.png);
+    background: url(image/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -350,7 +415,7 @@ p{
 }
 .for{
     margin: 4vh 3vw;
-    background: url(../resource/hexagonred.png);
+    background: url(image/hexagonred.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -437,13 +502,13 @@ p{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: blue;
+    background-color: #0081C9;
     width: 100%;
     height: 30%;
     position: relative;
 }
 .short-body{
-    background-color: white;
+    background-color: #5BC0F8;
     width: 100%;
     height: 58.6%;
     display: flex;
@@ -462,13 +527,13 @@ p{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: blue;
+    background-color: #0081C9;
     width: 100%;
     height: 25%;
     position: relative;
 }
 .medium-body{
-    background-color: white;
+    background-color: #5BC0F8;
     width: 100%;
     height: 65%;
     display: flex;
@@ -487,13 +552,13 @@ p{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: blue;
+    background-color: #0081C9;
     width: 100%;
     height: 22%;
     position: relative;
 }
 .tall-body{
-    background-color: white;
+    background-color: #5BC0F8;
     width: 100%;
     height: 70%;
     display: flex;
@@ -507,6 +572,9 @@ p{
     right: 10px;
     text-align: left;
     font-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 .display{

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="inputWindow popup">
@@ -26,7 +26,7 @@
         <div class="short-body">
           <form class="inputForm">
             <label for="inputVariable" class="popupLabel">Enter a variable name below:</label>
-            <input type="text" style="width: 90%; height: 12%; top: 30%;" class="variableBar" id="inputVariable" name="inputVariable">
+            <input autocomplete="off" type="text" style="width: 90%; height: 12%; top: 30%;" class="variableBar" id="inputVariable" name="inputVariable">
             <button type="submit" class="okButton">OK</button>
           </form>
         </div>
@@ -49,7 +49,7 @@
         <div class="tall-body">
           <form class="outputForm">
             <label for="outputExpression" class="popupLabel">Enter an expression below:</label><br>
-            <textarea class="outputTextarea" id="outputExpression" name="expression" cols="48" rows="8"></textarea>
+            <textarea autocomplete="off" class="outputTextarea" id="outputExpression" name="expression" cols="48" rows="8"></textarea>
             <button type="submit" class="okButton">OK</button>
           </form>
         </div>
@@ -72,7 +72,7 @@
         <div class="tall-body">
           <form class="declareForm">
             <label for="declareVariable" class="popupLabel">Variable Names:</label><br>
-            <input type="text" id="declareVariable" class="variableBar" name="declareVariable">
+            <input autocomplete="off" type="text" id="declareVariable" class="variableBar" name="declareVariable">
             <button type="submit" class="okButton">OK</button>
             <label class="typeLabel">Type:</label>
             <label class="typeString">
@@ -112,10 +112,10 @@
         <div class="tall-body">
           <form class="assignForm">
             <label for="assignVariable" class="popupLabel">Variable:</label>
-            <input style="width: 30%;" type="text" class="variableBar" id="assignVariable" name="assignVariable">
+            <input autocomplete="off" style="width: 30%;" type="text" class="variableBar" id="assignVariable" name="assignVariable">
             <label class="equalSign" for="assignExpression">=</label>
             <label class="expressionLabel" for="assignExpression">Expression:</label>
-            <textarea style="left: 45%; width: 50%;" class="outputTextarea" id="assignExpression" name="assignExpression" cols="24" rows="8"></textarea>
+            <textarea autocomplete="off" style="left: 45%; width: 50%;" class="outputTextarea" id="assignExpression" name="assignExpression" cols="24" rows="8"></textarea>
             <button type="submit" class="okButton">OK</button>
           </form>
         </div>
@@ -138,7 +138,7 @@
         <div class="medium-body">
           <form class="ifForm">
             <label for="ifExpression" class="popupLabel">Enter a conditional expression below:</label><br>
-            <textarea class="outputTextarea" id="ifExpression" name="ifExpression" cols="48" rows="5"></textarea>
+            <textarea autocomplete="off" class="outputTextarea" id="ifExpression" name="ifExpression" cols="48" rows="5"></textarea>
             <button type="submit" class="okButton">OK</button>
           </form>
         </div>
@@ -161,7 +161,7 @@
         <div class="medium-body">
           <form class="whileForm">
             <label for="whileExpression" class="popupLabel">Enter a conditional expression below:</label><br>
-            <textarea class="outputTextarea" id="whileExpression" name="whileExpression" cols="63" rows="5"></textarea>
+            <textarea autocomplete="off" class="outputTextarea" id="whileExpression" name="whileExpression" cols="63" rows="5"></textarea>
             <button type="submit" class="okButton">OK</button>
           </form>
         </div>
@@ -184,7 +184,7 @@
         <div class="tall-body">
           <form class="forForm">
             <label for="forVariable" class="popupLabel">Variable:</label><br>
-            <input type="text" style="width: 40%;" class="variableBar" id="forVariable" name="forVariable">
+            <input autocomplete="off" type="text" style="width: 40%;" class="variableBar" id="forVariable" name="forVariable">
             <button style="margin: 8px;" type="submit" class="okButton">OK</button>
             <label class="forTypeLabel">Type:</label>
             <label class="forTypeInteger">
@@ -197,8 +197,8 @@
             </label>
             <label for="forStartValue" class="startValueLabel">Start Value:</label>
             <label for="forEndValue" class="endValueLabel">End Value:</label>
-            <input type="text" id="forStartValue" name="forStartValue" class="startValueBar">
-            <input type="text" id="forEndValue" name="forEndValue" class="endValueBar">
+            <input autocomplete="off" type="text" id="forStartValue" name="forStartValue" class="startValueBar">
+            <input autocomplete="off" type="text" id="forEndValue" name="forEndValue" class="endValueBar">
             <label class="forDirectionLabel">Direction:</label>
             <label class="forIncreaseDirection">
               <input type="radio" name="forDirection" value="Increasing">
@@ -209,7 +209,7 @@
               Decreasing
             </label>
             <label class="forStepLabel" for="forStep">Step By:</label>
-            <input class="forStepBar" style="width: 40%;" type="text" id="forStep" name="forStep">
+            <input autocomplete="off" class="forStepBar" style="width: 40%;" type="text" id="forStep" name="forStep">
           </form>
         </div>
       </div>
@@ -243,22 +243,36 @@
         <p>For</p>
       </div>
     </div>
-    <div class="runPopup">
-      <div class="runPopupContent">
-        <div class="runBlockName"></div>
-        <div class="runCloseButton">X</div>
+    <div class="cppPopup">
+      <div class="cppPopupContent">
+        <div class="cppBlockName">
+          <div class="cppCloseButton">X</div>
+        </div>
+        <div class="cppPopupBody">
+          <form class="cppForm"></form>
+        </div>
       </div>
     </div>
     <div class="chart-section">
       <div class="oval begin block">
           <p>Begin</p>
       </div>
-      <div class="holder"></div>
+      <div class="holder" style="flex: 1;"></div>
       <div class="oval end block">
           <p>End</p>
       </div>
+      <div class="runPopup">
+        <div class="runPopupContent">
+          <div class="runPopupBody">
+            <form class="runForm">
+              <div class="runCloseButton">X</div>
+              <textarea class="terminal"></textarea>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
