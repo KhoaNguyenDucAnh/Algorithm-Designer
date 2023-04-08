@@ -45,6 +45,7 @@ const terminal = document.querySelector('.terminal')
 saveButton.addEventListener('click', function(){
     updateDict()
 })
+  
 runButton.addEventListener('click', function(){
     if(window.getComputedStyle(runPopup).getPropertyValue("display") == 'none'){
         updateDict()
@@ -125,7 +126,11 @@ declareForm.addEventListener('submit', function(event){
         }
     }
 
-    currentTarget.innerHTML = declareDatatype + " " + declareVariable
+    if(declareDatatype == '' || declareVariable.trim() == ''){
+        currentTarget.innerHTML = "Declare"
+    } else {
+        currentTarget.innerHTML = declareDatatype + " " + declareVariable
+    }
 
     currentTarget.setAttribute('type', declareDatatype)
     currentTarget.setAttribute('name', declareVariable)
@@ -156,7 +161,11 @@ assignForm.addEventListener('submit', function(event){
     const assignVariable = document.querySelector('#assignVariable').value
     const assignExpression = document.querySelector('#assignExpression').value
 
-    currentTarget.innerHTML = assignVariable + " = " + assignExpression 
+    if(assignVariable.trim() == '' || assignExpression.trim() == ''){
+        currentTarget.innerHTML = "Assign"
+    } else {
+        currentTarget.innerHTML = assignVariable + " = " + assignExpression 
+    }
 
     currentTarget.setAttribute('name', assignVariable)
     currentTarget.setAttribute('value', assignExpression)
@@ -179,7 +188,11 @@ ifForm.addEventListener('submit', function(event){
 
     const ifExpression = document.querySelector('#ifExpression').value
 
-    currentTarget.innerHTML = ifExpression
+    if(ifExpression.trim() == ''){
+        currentTarget.innerHTML = "If"
+    } else {
+        currentTarget.innerHTML = ifExpression
+    }
 
     currentTarget.setAttribute('condition', ifExpression)
 
@@ -204,7 +217,12 @@ whileForm.addEventListener('submit', function(event){
 
     const whileExpression = document.querySelector('#whileExpression').value
 
-    currentTarget.innerHTML = whileExpression
+    if(whileExpression.trim() == ''){
+        currentTarget.innerHTML = "While"
+    } else {
+        currentTarget.innerHTML = whileExpression
+    }
+
 
     currentTarget.setAttribute('condition', whileExpression)
 
@@ -255,7 +273,11 @@ forForm.addEventListener('submit', function(event){
         forOperator = "-"
     }
 
-    currentTarget.innerHTML = forVariable + " = " + forStartValue + " to " + forEndValue + " step " + forStep 
+    if(forVariable.trim() == '' || forStartValue.trim() == '' || forEndValue.trim() == '' || forStep.trim() == '' || forDatatype == '' || forDirection == ''){
+        currentTarget.innerHTML = "For"
+    } else {
+        currentTarget.innerHTML = forVariable + " = " + forStartValue + " to " + forEndValue + " step " + forStep 
+    }
 
     currentTarget.setAttribute(
         'declareStatement',
