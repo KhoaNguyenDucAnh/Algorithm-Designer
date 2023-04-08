@@ -967,8 +967,8 @@ function addEventListener(node) {
                 currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
                 currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
 
-                currentTarget.style.minHeight = '78px'
                 currentTarget.style.minWidth = '150px'
+                currentTarget.style.minHeight = currentTarget.offsetWidth / 150 * 86 + 'px'
                 currentTarget.style.fontSize = '100%'
             }
             else if(currentTarget.className.includes("hexagon")){
@@ -1154,7 +1154,7 @@ function addEventListener(node) {
     }
     node.addEventListener('dragover', function(e){
         e.preventDefault()
-        if(node.childNodes.length === 2 && node.childNodes[0].className != "branch-statement" && node.getAttribute('full') === null){
+        if(node.childNodes[0].className != "branch-statement" && node.getAttribute('full') === null){
             if(currentBlock != parentPlace){
                 if(currentTarget.className == "rhombus block"){
                     if(leftBranch.contains(node)){
