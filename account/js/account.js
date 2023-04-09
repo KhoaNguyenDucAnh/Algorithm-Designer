@@ -1,5 +1,7 @@
 const url = "http://localhost:8080/api/v1/algorithms/";
-const username = sessionStorage.getItem("username");
+const username = localStorage.getItem("username");
+const userId = localStorage.getItem("userId");
+const Authorization = localStorage.getItem("Authorization");
 const algorithm = document.getElementById("algorithm");
 
 function renderUsername() {
@@ -10,7 +12,8 @@ function renderAlgorithm() {
     fetch(url + "account/" + username, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": Authorization
         }
     })
     .then(function(response) {
@@ -25,7 +28,7 @@ function renderAlgorithm() {
             let block = document.createElement("div");
             block.className = "aProject";
             a.innerText = element.name;
-            a.href = url + element.id;
+            a.href = encodeURI("http://localhost:8080/design/" + element.id + "?Authorization=" + Authorization);
             a.className = "project";
             button.className = "deleteButton";
             button.innerText = "Delete";
@@ -44,7 +47,8 @@ function deleteAlgorithm(id){
     fetch(url + id, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": Authorization
         }
     })
     .then(function(response) {
@@ -61,12 +65,14 @@ function addAlgorithm(){
         method: "POST",
         body: JSON.stringify({
             name: name,
-            account: {
-                username: username,
+            user: {
+                id: userId,
+                username: username
             }
         }),
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": Authorization
         }
     })
     .then(function(response) {
