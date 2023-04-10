@@ -15,22 +15,37 @@ function handleLogin(event) {
         },
         body: JSON.stringify(user)
     })
-    .then(response => response.json().then(json => ({
-        headers: response.headers,
-        ok: response.ok,
-        json
-    })))
-    .then(function({ok, headers, json}) {
-        if (!ok) {
+    .then(function(response) {
+        if (!response.ok) {
             alert("Invalid Credentials");
             throw new Error("Invalid Credentials");
         }
-        localStorage.setItem("Authorization", headers.get("Authorization"));
-        localStorage.setItem("username", json.username);
-        localStorage.setItem("userId", json.id);
+        return response.json();
+    })
+    .then(function(data) {
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("userId", data.id);
 
-        window.location.href = encodeURI("http://localhost:8080/account?Authorization=" + localStorage.getItem("Authorization"));
+        window.open("http://localhost:8080/account.html", "_self");
     });
+    // .then(response => response.json().then(json => ({
+    //     headers: response.headers,
+    //     ok: response.ok,
+    //     json
+    // })))
+    // .then(function({ok, headers, json}) {
+    //     if (!ok) {
+    //         alert("Invalid Credentials");
+    //         throw new Error("Invalid Credentials");
+    //     }
+    //     localStorage.setItem("Authorization", headers.get("Authorization"));
+    //     localStorage.setItem("username", json.username);
+    //     localStorage.setItem("userId", json.id);
+
+    //     // window.location.href = encodeURI("http://localhost:8080/account?Authorization=" + localStorage.getItem("Authorization"));
+    
+    //     window.location.href = "http://localhost:8080/account.html";
+    // });
 }
 
 form.addEventListener("submit", handleLogin);

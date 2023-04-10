@@ -3,7 +3,7 @@ var form = document.querySelector(".form");
 
 function handleSignup(event) {
     event.preventDefault();
-    const data = {
+    const user = {
         username: form.fullname.value,
         password: form.password.value,
         confirmedPassword: form.password_confirmation.value
@@ -15,23 +15,18 @@ function handleSignup(event) {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json().then(json => ({
-        headers: response.headers,
-        ok: response.ok,
-        json
-    })))
-    .then(function({ok, headers, json}) {
-        if (!ok) {
+    .then(function(response) {
+        if (!response.ok) {
             alert("Invalid Credentials");
             throw new Error("Invalid Credentials");
         }
-        localStorage.setItem("Authorization", headers.get("Authorization"));
-        localStorage.setItem("username", json.username);
-        localStorage.setItem("userId", json.id);
-        
-        document.cookie.setItem("Authorization", headers.get("Authorization"));
+        return response.json();
+    })
+    .then(function(data) {
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("userId", data.id);
 
-        window.location.href = encodeURI("http://localhost:8080/account?Authorization=" + localStorage.getItem("Authorization"));
+        window.location.href = "http://localhost:8080/account.html";
     });
 }
 

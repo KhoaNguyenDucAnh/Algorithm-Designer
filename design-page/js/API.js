@@ -4,6 +4,7 @@ const algorithmId = window.location.pathname.slice(8, -5);
 function updateAlgorithm() {
     fetch(url + algorithmId, {
         method: "PUT",
+        credentials: "same-origin",
         headers: {
             "Content-Type": "application/json"
         },

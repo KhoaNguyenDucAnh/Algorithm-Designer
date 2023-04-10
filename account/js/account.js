@@ -1,7 +1,6 @@
 const url = "http://localhost:8080/api/v1/algorithms/";
 const username = localStorage.getItem("username");
 const userId = localStorage.getItem("userId");
-const Authorization = localStorage.getItem("Authorization");
 const algorithm = document.getElementById("algorithm");
 
 function renderUsername() {
@@ -11,9 +10,9 @@ function renderUsername() {
 function renderAlgorithm() {
     fetch(url + "account/" + username, {
         method: "GET",
+        credentials: "same-origin",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": Authorization
+            "Content-Type": "application/json"
         }
     })
     .then(function(response) {
@@ -28,7 +27,7 @@ function renderAlgorithm() {
             let block = document.createElement("div");
             block.className = "aProject";
             a.innerText = element.name;
-            a.href = encodeURI("http://localhost:8080/design/" + element.id + "?Authorization=" + Authorization);
+            a.href = "http://localhost:8080/design/" + element.id + ".html";
             a.className = "project";
             button.className = "deleteButton";
             button.innerText = "Delete";
@@ -46,9 +45,9 @@ function renderAlgorithm() {
 function deleteAlgorithm(id){
     fetch(url + id, {
         method: "DELETE",
+        credentials: "same-origin",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": Authorization
+            "Content-Type": "application/json"
         }
     })
     .then(function(response) {
@@ -63,17 +62,17 @@ function addAlgorithm(){
     let name = document.querySelector("#projectName").value;
     fetch(url.slice(0, -1), {
         method: "POST",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({
             name: name,
             user: {
                 id: userId,
                 username: username
             }
-        }),
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": Authorization
-        }
+        })
     })
     .then(function(response) {
         return response.json();
