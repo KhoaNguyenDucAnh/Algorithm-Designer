@@ -4,13 +4,11 @@ const algorithmId = window.location.pathname.slice(8, -5);
 function updateAlgorithm() {
     fetch(url + algorithmId, {
         method: "PUT",
-        credentials: "same-origin",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "blockBar": document.getElementsByClassName("block-bar")[0].innerHTML,
-            "chartSection": document.getElementsByClassName("chart-section")[0].innerHTML
+            "document": document.documentElement.outerHTML
         })
     })
     .then(function(response) {

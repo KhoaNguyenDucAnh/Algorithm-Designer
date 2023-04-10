@@ -282,7 +282,7 @@ forForm.addEventListener('submit', function(event){
     currentTarget.setAttribute(
         'declareStatement',
         JSON.stringify({
-            StatementType: "Declaration", 
+            statementType: "Declaration",
             type: forDatatype,
             name: forVariable,
             nextStatement: null
@@ -291,7 +291,7 @@ forForm.addEventListener('submit', function(event){
     currentTarget.setAttribute(
         'assignStatement',
         JSON.stringify({
-            StatementType: "Assignment", 
+            statementType: "Assignment", 
             name: forVariable,
             value: forStartValue,
             nextStatement: null
@@ -303,7 +303,7 @@ forForm.addEventListener('submit', function(event){
     currentTarget.setAttribute(
         'forLoopStatement',
         JSON.stringify({
-            StatementType: "Assignment", 
+            statementType: "Assignment", 
             name: forVariable,
             value: `${forVariable} ${forOperator} ${forStep}`,
             nextStatement: null
@@ -465,7 +465,7 @@ function getKeyValue(node) {
         var value = {}
         switch (node.className) {
             case "input parallelogram block":
-                value["StatementType"] = "Input"
+                value["statementType"] = "Input"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -490,7 +490,7 @@ function getKeyValue(node) {
 
                 break
             case "output parallelogram block":
-                value["StatementType"] = "Output"
+                value["statementType"] = "Output"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -511,11 +511,11 @@ function getKeyValue(node) {
                 if(outputExpression === null){
                     outputExpression = ''
                 }
-                value["name"] = outputExpression
+                value["value"] = outputExpression
 
                 break
             case "declare rectangle block":
-                value["StatementType"] = "Declaration"
+                value["statementType"] = "Declaration"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null || nextNode.id === undefined){
                     if(nextNode.nextSibling.className == "oval end block"){
@@ -549,7 +549,7 @@ function getKeyValue(node) {
                 
                 break
             case "assign rectangle block":
-                value["StatementType"] = "Assignment"
+                value["statementType"] = "Assignment"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -579,7 +579,7 @@ function getKeyValue(node) {
 
                 break
             case "rhombus block":
-                value["StatementType"] = "Conditional"
+                value["statementType"] = "Conditional"
                 var nextNode = node.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -630,7 +630,7 @@ function getKeyValue(node) {
 
                 break
             case "while hexagon block":
-                value["StatementType"] = "WhileLoop"
+                value["statementType"] = "WhileLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -668,7 +668,7 @@ function getKeyValue(node) {
 
                 break
             case "for hexagon block":
-                value["StatementType"] = "ForLoop"
+                value["statementType"] = "ForLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -709,7 +709,7 @@ function getKeyValue(node) {
 
                 break
             case "oval begin block":
-                value["StatementType"] = "Begin"
+                value["statementType"] = "Begin"
                 var nextNode = node.nextSibling.nextSibling.nextSibling
                 if(nextNode.nextSibling.className == "oval end block"){
                     var nextID = nextNode.nextSibling.id
@@ -723,7 +723,7 @@ function getKeyValue(node) {
                 value["nextStatement"] = nextID
                 break
             case "oval end block":
-                value["StatementType"] = "End"
+                value["statementType"] = "End"
                 value["nextStatement"] = null
                 break
             default:
@@ -747,7 +747,7 @@ function updateDict(){
     id = 0
     iterateNodes(dropPlace)
     getKeyValue(dropPlace)
-    console.log(dict)
+    return dict
 }
 
 function updateBranchWidth(){
@@ -814,9 +814,6 @@ function addEventListener(node) {
             node.style.background = 'transparent'
             currentTarget.style.margin = '0'
             if(currentTarget.className == "rhombus block"){
-                node.childNodes[1].remove()
-                node.childNodes[1].remove()
-                
                 var aboveBlock = document.createElement("div")
                 var leftCondition = document.createElement("div")
                 var rightCondition = document.createElement("div")
@@ -970,10 +967,13 @@ function addEventListener(node) {
                 currentTarget.style.minWidth = '150px'
                 currentTarget.style.minHeight = currentTarget.offsetWidth / 150 * 86 + 'px'
                 currentTarget.style.fontSize = '100%'
+
+                const childNodes = node.childNodes;
+                for (let i = childNodes.length - 2; i >= 0; i--) {
+                    node.removeChild(childNodes[i]);
+                }
             }
             else if(currentTarget.className.includes("hexagon")){
-                node.childNodes[1].remove()
-                node.childNodes[1].remove()
 
                 var aboveBlock = document.createElement("div")
                 var bottomBlock = document.createElement("div")
@@ -1085,10 +1085,15 @@ function addEventListener(node) {
                 currentTarget.style.minHeight = '50px'
                 currentTarget.style.minWidth = '150px'
                 currentTarget.style.fontSize = '100%'
+
+                const childNodes = node.childNodes;
+                for (let i = childNodes.length - 2; i >= 0; i--) {
+                    node.removeChild(childNodes[i]);
+                }
             }
             else
             {
-                node.childNodes[2].remove()
+                // node.childNodes[2].remove()
                 var aboveBlock = document.createElement("div")
                 var belowBlock = document.createElement("div")
                 addEventListener(aboveBlock)
@@ -1171,7 +1176,7 @@ function addEventListener(node) {
                 }
             }
             I = true
-            this.insertBefore(currentTarget, this.firstChild)
+            node.insertBefore(currentTarget, node.firstChild)
             currentTarget.style.zIndex = '2'
             if(first){
                 var cloneShape = currentTarget.cloneNode(true)
@@ -1179,10 +1184,10 @@ function addEventListener(node) {
                     inBody = false 
                     currentTarget = this
                     currentBlock = this.parentNode
-                    if(currentTarget.className == "rhombus block"){
+                    if(currentTarget.className == "rhombus block" && currentTarget.parentNode != parentPlace){
                         leftBranch = currentTarget.parentNode.parentNode.previousSibling.childNodes[1]
                         rightBranch = currentTarget.parentNode.parentNode.nextSibling.childNodes[1]
-                    } else if(currentTarget.className.includes("hexagon")){
+                    } else if(currentTarget.className.includes("hexagon") && currentTarget.parentNode != parentPlace){
                         rightBranch = currentTarget.parentNode.nextSibling.childNodes[1]
                     }
                     if(parentPlace.contains(currentTarget)){
@@ -1198,7 +1203,104 @@ function addEventListener(node) {
 }
 
 addBackground(blockHolder)
-addEventListener(blockHolder)
+
+const holders = document.querySelectorAll('.holder');
+for (let i = 0; i < holders.length; i++) {
+  const holder = holders[i];
+  addEventListener(holder)
+}
+
+const blockNodes = document.querySelectorAll('[class*="block"]');
+blockNodes.forEach(node => {
+    if(!node.className.includes('oval') && !node.className.includes('display') && node.parentNode != parentPlace){
+        switch (node.className) {
+            case "input parallelogram block":
+                node.addEventListener('click', function(){
+                    inputPopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#inputVariable').value = currentTarget.getAttribute('name')
+                })
+                break
+            case "output parallelogram block":
+                node.addEventListener('click', function(){
+                    outputPopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#outputExpression').value = currentTarget.getAttribute('name')
+                })
+                break
+            case "declare rectangle block":
+                node.addEventListener('click', function(){
+                    declarePopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#declareVariable').value = currentTarget.getAttribute('name')
+            
+                    const datatypeButtons = document.getElementsByName('datatype')
+                    for (let i = 0; i < datatypeButtons.length; i++) {
+                        if (datatypeButtons[i].value == currentTarget.getAttribute('type')) {
+                            datatypeButtons[i].checked = true
+                            break
+                        }
+                    }
+                })
+                break
+            case "assign rectangle block":
+                node.addEventListener('click', function(){
+                    assignPopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#assignVariable').value = currentTarget.getAttribute('name')
+                    document.querySelector('#assignExpression').value = currentTarget.getAttribute('value')
+                })
+                break
+            case "rhombus block":
+                node.addEventListener('click', function(){
+                    ifPopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#ifExpression').value = currentTarget.getAttribute('condition')
+                })
+                break
+            case "while hexagon block":
+                node.addEventListener('click', function(){
+                    whilePopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#whileExpression').value = currentTarget.getAttribute('condition')
+                })
+                break
+            case "for hexagon block":
+                node.addEventListener('click', function(){
+                    forPopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#forVariable').value = JSON.parse(currentTarget.getAttribute('declareStatement'))["name"]
+                    document.querySelector('#forStartValue').value = JSON.parse(currentTarget.getAttribute('assignStatement'))["value"]
+                    document.querySelector('#forEndValue').value = currentTarget.getAttribute('condition').split(" ")[2]
+                    document.querySelector('#forStep').value = JSON.parse(currentTarget.getAttribute('forLoopStatement'))["value"].split(" ")[2]
+            
+                    const forDatatypeButtons = document.getElementsByName('forDatatype')
+                    const forDirectionButtons = document.getElementsByName('forDirection')
+                    const datatype = JSON.parse(currentTarget.getAttribute('declareStatement'))["type"]
+                    const operator = JSON.parse(currentTarget.getAttribute('forLoopStatement'))["value"].split(" ")[1]
+                    var direction = "Increasing"
+                    if(operator == "-"){
+                        direction = "Decreasing"
+                    }
+            
+                    for (let i = 0; i < forDatatypeButtons.length; i++) {
+                        if (forDatatypeButtons[i].value == datatype) {
+                            forDatatypeButtons[i].checked = true
+                            break
+                        }
+                    }
+                    for (let i = 0; i < forDirectionButtons.length; i++) {
+                        if (forDirectionButtons[i].value == direction) {
+                            forDirectionButtons[i].checked = true
+                            break
+                        }
+                    }
+                })
+                break
+            default:
+        }
+    }
+});
   
 body.addEventListener('dragover', function(e){
     e.preventDefault()
@@ -1219,10 +1321,10 @@ targetList.forEach(target => {
         inBody = false 
         currentTarget = this
         currentBlock = this.parentNode
-        if(currentTarget.className == "rhombus block"){
+        if(currentTarget.className == "rhombus block" && currentTarget.parentNode != parentPlace){
             leftBranch = currentTarget.parentNode.parentNode.previousSibling.childNodes[1]
             rightBranch = currentTarget.parentNode.parentNode.nextSibling.childNodes[1]
-        } else if(currentTarget.className.includes("hexagon")){
+        } else if(currentTarget.className.includes("hexagon") && currentTarget.parentNode != parentPlace){
             rightBranch = currentTarget.parentNode.nextSibling.childNodes[1]
         }
         if(parentPlace.contains(currentTarget)){
@@ -1256,3 +1358,45 @@ parentPlace.addEventListener('drop', function(e){
 })
 
 updateDict()
+
+function run() {
+    dict = updateDict()
+    console.log(dict)
+    fetch(url + "run", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dict)
+    })
+    .then(function(response) {
+        if (!response.ok) {
+            
+        }
+        return response.json();
+    })
+    .then(function(data) {
+        return;
+    });
+}
+
+function generate() {
+    dict = updateDict()
+    console.log(dict)
+    fetch(url + "generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dict)
+    })
+    .then(function(response) {
+        if (!response.ok) {
+            
+        }
+        return response.json();
+    })
+    .then(function(data) {
+        return;
+    });
+}
