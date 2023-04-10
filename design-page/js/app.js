@@ -4,7 +4,6 @@ var parentPlace = document.querySelector('.block-bar')
 var blockHolder = document.querySelector('.holder')
 const inputPopup = document.querySelector('.inputWindow')
 const outputPopup = document.querySelector('.outputWindow')
-const declarePopup = document.querySelector('.declareWindow')
 const assignPopup = document.querySelector('.assignWindow')
 const ifPopup = document.querySelector('.ifWindow')
 const whilePopup = document.querySelector('.whileWindow')
@@ -33,7 +32,6 @@ var dict = {}
 
 const inputForm = document.querySelector('.inputForm')
 const outputForm = document.querySelector('.outputForm')
-const declareForm = document.querySelector('.declareForm')
 const assignForm = document.querySelector('.assignForm')
 const ifForm = document.querySelector('.ifForm')
 const whileForm = document.querySelector('.whileForm')
@@ -75,9 +73,24 @@ inputForm.addEventListener('submit', function(event){
     event.preventDefault()
 
     const variableName = document.querySelector('#inputVariable').value
-    currentTarget.innerHTML = "Input " + variableName
+    const datatypeButtons = document.getElementsByName('datatype')
+    var inputDatatype = ''
+
+    for (let i = 0; i < datatypeButtons.length; i++) {
+        if (datatypeButtons[i].checked) {
+            inputDatatype = datatypeButtons[i].value
+            break
+        }
+    }
+
+    if(inputDatatype == '' || variableName.trim() == ''){
+        currentTarget.innerHTML = "Input"
+    } else {
+        currentTarget.innerHTML = "Input " + inputDatatype + " " + variableName
+    }
 
     currentTarget.setAttribute('name', variableName)
+    currentTarget.setAttribute('type', inputDatatype)
 
     inputForm.reset()
     inputPopup.style.display = 'none'
@@ -86,6 +99,14 @@ inputForm.addEventListener('submit', function(event){
         inputPopup.style.display = 'block'
         currentTarget = this
         document.querySelector('#inputVariable').value = currentTarget.getAttribute('name')
+
+        const datatypeButtons = document.getElementsByName('datatype')
+        for (let i = 0; i < datatypeButtons.length; i++) {
+            if (datatypeButtons[i].value == currentTarget.getAttribute('type')) {
+                datatypeButtons[i].checked = true
+                break
+            }
+        }
     })
 
     updateBranchWidth()
@@ -107,49 +128,6 @@ outputForm.addEventListener('submit', function(event){
         outputPopup.style.display = 'block'
         currentTarget = this
         document.querySelector('#outputExpression').value = currentTarget.getAttribute('name')
-    })
-
-    updateBranchWidth()
-    updateBodyWidth()
-})
-declareForm.addEventListener('submit', function(event){
-    event.preventDefault()
-
-    const datatypeButtons = document.getElementsByName('datatype')
-    const declareVariable = document.querySelector('#declareVariable').value
-    var declareDatatype = ''
-
-    for (let i = 0; i < datatypeButtons.length; i++) {
-        if (datatypeButtons[i].checked) {
-            declareDatatype = datatypeButtons[i].value
-            break
-        }
-    }
-
-    if(declareDatatype == '' || declareVariable.trim() == ''){
-        currentTarget.innerHTML = "Declare"
-    } else {
-        currentTarget.innerHTML = declareDatatype + " " + declareVariable
-    }
-
-    currentTarget.setAttribute('type', declareDatatype)
-    currentTarget.setAttribute('name', declareVariable)
-
-    declareForm.reset()
-    declarePopup.style.display = 'none'
-
-    currentTarget.addEventListener('click', function(){
-        declarePopup.style.display = 'block'
-        currentTarget = this
-        document.querySelector('#declareVariable').value = currentTarget.getAttribute('name')
-
-        const datatypeButtons = document.getElementsByName('datatype')
-        for (let i = 0; i < datatypeButtons.length; i++) {
-            if (datatypeButtons[i].value == currentTarget.getAttribute('type')) {
-                datatypeButtons[i].checked = true
-                break
-            }
-        }
     })
 
     updateBranchWidth()
@@ -242,56 +220,30 @@ forForm.addEventListener('submit', function(event){
     event.preventDefault()
 
     const forVariable = document.querySelector('#forVariable').value
-    const forDatatypeButtons = document.getElementsByName('forDatatype')
-    const forDirectionButtons = document.getElementsByName('forDirection')
     const forStartValue = document.querySelector('#forStartValue').value
     const forEndValue = document.querySelector('#forEndValue').value
     const forStep =  document.querySelector('#forStep').value
-    var forDatatype = ''
-    var forDirection = ''
     var forCondition = ''
-    var forOperator = ''
 
-    for (let i = 0; i < forDatatypeButtons.length; i++) {
-        if (forDatatypeButtons[i].checked) {
-            forDatatype = forDatatypeButtons[i].value
-            break
-        }
-    }
-    for (let i = 0; i < forDirectionButtons.length; i++) {
-        if (forDirectionButtons[i].checked) {
-            forDirection = forDirectionButtons[i].value
-            break
-        }
-    }
+    var startNum = parseInt(forStartValue)
+    var endNum = parseInt(forEndValue)
 
-    if(forDirection == "Increasing"){
-        forCondition = forVariable + " <= " + forEndValue
-        forOperator = "+"
+    if(startNum <= endNum){
+        forCondition = `${forVariable} <= ${forEndValue}`
     } else {
-        forCondition = forVariable + " >= " + forEndValue
-        forOperator = "-"
+        forCondition = `${forVariable} >= ${forEndValue}`
     }
 
-    if(forVariable.trim() == '' || forStartValue.trim() == '' || forEndValue.trim() == '' || forStep.trim() == '' || forDatatype == '' || forDirection == ''){
+    if(forVariable.trim() == '' || forStartValue.trim() == '' || forEndValue.trim() == '' || forStep.trim() == ''){
         currentTarget.innerHTML = "For"
     } else {
         currentTarget.innerHTML = forVariable + " = " + forStartValue + " to " + forEndValue + " step " + forStep 
     }
 
     currentTarget.setAttribute(
-        'declareStatement',
-        JSON.stringify({
-            statementType: "Declaration",
-            type: forDatatype,
-            name: forVariable,
-            nextStatement: null
-        })
-    )
-    currentTarget.setAttribute(
         'assignStatement',
         JSON.stringify({
-            statementType: "Assignment", 
+            StatementType: "Assignment", 
             name: forVariable,
             value: forStartValue,
             nextStatement: null
@@ -300,15 +252,7 @@ forForm.addEventListener('submit', function(event){
 
     currentTarget.setAttribute('condition', forCondition)
 
-    currentTarget.setAttribute(
-        'forLoopStatement',
-        JSON.stringify({
-            statementType: "Assignment", 
-            name: forVariable,
-            value: `${forVariable} ${forOperator} ${forStep}`,
-            nextStatement: null
-        })
-    )
+    currentTarget.setAttribute('value', forStep)
 
     forForm.reset()
     forPopup.style.display = 'none'
@@ -316,32 +260,10 @@ forForm.addEventListener('submit', function(event){
     currentTarget.addEventListener('click', function(){
         forPopup.style.display = 'block'
         currentTarget = this
-        document.querySelector('#forVariable').value = JSON.parse(currentTarget.getAttribute('declareStatement'))["name"]
+        document.querySelector('#forVariable').value = JSON.parse(currentTarget.getAttribute('assignStatement'))["name"]
         document.querySelector('#forStartValue').value = JSON.parse(currentTarget.getAttribute('assignStatement'))["value"]
         document.querySelector('#forEndValue').value = currentTarget.getAttribute('condition').split(" ")[2]
-        document.querySelector('#forStep').value = JSON.parse(currentTarget.getAttribute('forLoopStatement'))["value"].split(" ")[2]
-
-        const forDatatypeButtons = document.getElementsByName('forDatatype')
-        const forDirectionButtons = document.getElementsByName('forDirection')
-        const datatype = JSON.parse(currentTarget.getAttribute('declareStatement'))["type"]
-        const operator = JSON.parse(currentTarget.getAttribute('forLoopStatement'))["value"].split(" ")[1]
-        var direction = "Increasing"
-        if(operator == "-"){
-            direction = "Decreasing"
-        }
-
-        for (let i = 0; i < forDatatypeButtons.length; i++) {
-            if (forDatatypeButtons[i].value == datatype) {
-                forDatatypeButtons[i].checked = true
-                break
-            }
-        }
-        for (let i = 0; i < forDirectionButtons.length; i++) {
-            if (forDirectionButtons[i].value == direction) {
-                forDirectionButtons[i].checked = true
-                break
-            }
-        }
+        document.querySelector('#forStep').value = currentTarget.getAttribute('value')
     })
 
     updateBranchWidth()
@@ -465,7 +387,7 @@ function getKeyValue(node) {
         var value = {}
         switch (node.className) {
             case "input parallelogram block":
-                value["statementType"] = "Input"
+                value["StatementType"] = "Input"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -483,14 +405,16 @@ function getKeyValue(node) {
                 } 
 
                 var inputVariable = node.getAttribute('name')
+                var inputDatatype = node.getAttribute('type')
                 if(inputVariable === null){
                     inputVariable = ''
                 }
                 value["name"] = inputVariable
+                value["type"] = inputDatatype
 
                 break
             case "output parallelogram block":
-                value["statementType"] = "Output"
+                value["StatementType"] = "Output"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -511,45 +435,11 @@ function getKeyValue(node) {
                 if(outputExpression === null){
                     outputExpression = ''
                 }
-                value["value"] = outputExpression
+                value["name"] = outputExpression
 
                 break
-            case "declare rectangle block":
-                value["statementType"] = "Declaration"
-                var nextNode = node.parentNode.nextSibling.nextSibling
-                if(nextNode === null || nextNode.id === undefined){
-                    if(nextNode.nextSibling.className == "oval end block"){
-                        value["nextStatement"] = nextNode.nextSibling.id
-                    } else {
-                        value["nextStatement"] = null
-                    }
-                } else {
-                    if(nextNode.className == "oval end block"){
-                        var nextID = nextNode.id
-                    } else if(nextNode.firstChild.className.includes('block')){
-                        var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
-                        var nextID = nextNode.firstChild.childNodes[1].firstChild.id
-                    } else {
-                        var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
-                    }
-                    value["nextStatement"] = nextID
-                } 
-                
-                var declareDatatype = node.getAttribute('type')
-                var declareVariable = node.getAttribute('name')
-                if(declareDatatype === null){
-                    declareDatatype = ''
-                }
-                if(declareVariable === null){
-                    declareVariable = ''
-                }
-                value["type"] = declareDatatype
-                value["name"] = declareVariable
-                
-                break
             case "assign rectangle block":
-                value["statementType"] = "Assignment"
+                value["StatementType"] = "Assignment"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -579,7 +469,7 @@ function getKeyValue(node) {
 
                 break
             case "rhombus block":
-                value["statementType"] = "Conditional"
+                value["StatementType"] = "Conditional"
                 var nextNode = node.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -630,7 +520,7 @@ function getKeyValue(node) {
 
                 break
             case "while hexagon block":
-                value["statementType"] = "WhileLoop"
+                value["StatementType"] = "WhileLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -668,7 +558,7 @@ function getKeyValue(node) {
 
                 break
             case "for hexagon block":
-                value["statementType"] = "ForLoop"
+                value["StatementType"] = "ForLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
@@ -698,18 +588,16 @@ function getKeyValue(node) {
                     value["loopStatement"] = nextID
                 } 
 
-                const declareStatement = JSON.parse(node.getAttribute('declareStatement'))
                 const assignStatement = JSON.parse(node.getAttribute('assignStatement'))
                 const forCondition = node.getAttribute('condition')
-                const forLoopStatement = JSON.parse(node.getAttribute('forLoopStatement'))
-                value["declareStatement"] = declareStatement
+                const forValue = node.getAttribute('value')
                 value["assignStatement"] = assignStatement
                 value["condition"] = forCondition
-                value["forLoopStatement"] = forLoopStatement
+                value["value"] = forValue
 
                 break
             case "oval begin block":
-                value["statementType"] = "Begin"
+                value["StatementType"] = "Begin"
                 var nextNode = node.nextSibling.nextSibling.nextSibling
                 if(nextNode.nextSibling.className == "oval end block"){
                     var nextID = nextNode.nextSibling.id
@@ -723,7 +611,7 @@ function getKeyValue(node) {
                 value["nextStatement"] = nextID
                 break
             case "oval end block":
-                value["statementType"] = "End"
+                value["StatementType"] = "End"
                 value["nextStatement"] = null
                 break
             default:
@@ -747,7 +635,7 @@ function updateDict(){
     id = 0
     iterateNodes(dropPlace)
     getKeyValue(dropPlace)
-    return dict
+    console.log(dict)
 }
 
 function updateBranchWidth(){
@@ -1093,7 +981,6 @@ function addEventListener(node) {
             }
             else
             {
-                // node.childNodes[2].remove()
                 var aboveBlock = document.createElement("div")
                 var belowBlock = document.createElement("div")
                 addEventListener(aboveBlock)
@@ -1358,45 +1245,3 @@ parentPlace.addEventListener('drop', function(e){
 })
 
 updateDict()
-
-function run() {
-    dict = updateDict()
-    console.log(dict)
-    fetch(url + "run", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dict)
-    })
-    .then(function(response) {
-        if (!response.ok) {
-            
-        }
-        return response.json();
-    })
-    .then(function(data) {
-        return;
-    });
-}
-
-function generate() {
-    dict = updateDict()
-    console.log(dict)
-    fetch(url + "generate", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dict)
-    })
-    .then(function(response) {
-        if (!response.ok) {
-            
-        }
-        return response.json();
-    })
-    .then(function(data) {
-        return;
-    });
-}
