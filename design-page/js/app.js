@@ -1,22 +1,22 @@
-var dropPlace = document.querySelector(".chart-section")
-var targetList = document.querySelectorAll(".block")
-var parentPlace = document.querySelector(".block-bar")
-var blockHolder = document.querySelector(".holder")
-const inputPopup = document.querySelector(".inputWindow")
-const outputPopup = document.querySelector(".outputWindow")
-const assignPopup = document.querySelector(".assignWindow")
-const ifPopup = document.querySelector(".ifWindow")
-const whilePopup = document.querySelector(".whileWindow")
-const forPopup = document.querySelector(".forWindow")
-const closePopupButton = document.querySelectorAll(".close-popup")
-const runButton = document.querySelector(".run-button")
-const runPopup = document.querySelector(".runPopup")
-const runCloseButton = document.querySelector(".runCloseButton")
-const cppButton = document.querySelector(".cpp")
-const cppPopup = document.querySelector(".cppPopup")
-const cppCloseButton = document.querySelector(".cppCloseButton")
-const saveButton = document.querySelector(".save-button")
-const toolBar = document.querySelector(".toolbar")
+var dropPlace = document.querySelector('.chart-section')
+var targetList = document.querySelectorAll('.block')
+var parentPlace = document.querySelector('.block-bar')
+var blockHolder = document.querySelector('.holder')
+const inputPopup = document.querySelector('.inputWindow')
+const outputPopup = document.querySelector('.outputWindow')
+const assignPopup = document.querySelector('.assignWindow')
+const ifPopup = document.querySelector('.ifWindow')
+const whilePopup = document.querySelector('.whileWindow')
+const forPopup = document.querySelector('.forWindow')
+const closePopupButton = document.querySelectorAll('.close-popup')
+const runButton = document.querySelector('.run-button')
+const runPopup = document.querySelector('.runPopup')
+const runCloseButton = document.querySelector('.runCloseButton')
+const cppButton = document.querySelector('.cpp')
+const cppPopup = document.querySelector('.cppPopup')
+const cppCloseButton = document.querySelector('.cppCloseButton')
+const saveButton = document.querySelector('.save-button')
+const toolBar = document.querySelector('.toolbar')
 var body = document
 
 var currentTarget = null
@@ -30,51 +30,51 @@ var id = 0
 
 var dict = {}
 
-const inputForm = document.querySelector(".inputForm")
-const outputForm = document.querySelector(".outputForm")
-const assignForm = document.querySelector(".assignForm")
-const ifForm = document.querySelector(".ifForm")
-const whileForm = document.querySelector(".whileForm")
-const forForm = document.querySelector(".forForm")
-const runForm = document.querySelector(".runForm")
+const inputForm = document.querySelector('.inputForm')
+const outputForm = document.querySelector('.outputForm')
+const assignForm = document.querySelector('.assignForm')
+const ifForm = document.querySelector('.ifForm')
+const whileForm = document.querySelector('.whileForm')
+const forForm = document.querySelector('.forForm')
+const runForm = document.querySelector('.runForm')
 
-const terminal = document.querySelector(".terminal")
+const terminal = document.querySelector('.terminal')
 
-saveButton.addEventListener("click", function(){
+saveButton.addEventListener('click', function(){
     updateDict()
 })
   
-runButton.addEventListener("click", function(){
-    if(window.getComputedStyle(runPopup).getPropertyValue("display") == "none"){
+runButton.addEventListener('click', function(){
+    if(window.getComputedStyle(runPopup).getPropertyValue("display") == 'none'){
         updateDict()
-        toolBar.style.pointerEvents = "none"
-        runPopup.style.display = "block"
+        toolBar.style.pointerEvents = 'none'
+        runPopup.style.display = 'block'
         var space = document.createElement("div")
-        space.classList.add("bigSpace")
+        space.classList.add('bigSpace')
         dropPlace.appendChild(space)
     }
     terminal.focus()
 })
-runCloseButton.addEventListener("click", function(){
-    runPopup.style.display = "none"
-    toolBar.style.pointerEvents = "auto"
+runCloseButton.addEventListener('click', function(){
+    runPopup.style.display = 'none'
+    toolBar.style.pointerEvents = 'auto'
     dropPlace.removeChild(dropPlace.lastChild)
     runForm.reset()
 })
-cppButton.addEventListener("click", function(){
+cppButton.addEventListener('click', function(){
     updateDict()
-    cppPopup.style.display = "block"
+    cppPopup.style.display = 'block'
 })
-cppCloseButton.addEventListener("click", function(){
-    cppPopup.style.display = "none"
+cppCloseButton.addEventListener('click', function(){
+    cppPopup.style.display = 'none'
 })
 
-inputForm.addEventListener("submit", function(event){
+inputForm.addEventListener('submit', function(event){
     event.preventDefault()
 
-    const variableName = document.querySelector("#inputVariable").value
-    const datatypeButtons = document.getElementsByName("datatype")
-    var inputDatatype = ""
+    const variableName = document.querySelector('#inputVariable').value
+    const datatypeButtons = document.getElementsByName('datatype')
+    var inputDatatype = ''
 
     for (let i = 0; i < datatypeButtons.length; i++) {
         if (datatypeButtons[i].checked) {
@@ -83,26 +83,26 @@ inputForm.addEventListener("submit", function(event){
         }
     }
 
-    if(inputDatatype == "" || variableName.trim() == ""){
+    if(inputDatatype == '' || variableName.trim() == ''){
         currentTarget.innerHTML = "Input"
     } else {
         currentTarget.innerHTML = "Input " + inputDatatype + " " + variableName
     }
 
-    currentTarget.setAttribute("name", variableName)
-    currentTarget.setAttribute("type", inputDatatype)
+    currentTarget.setAttribute('name', variableName)
+    currentTarget.setAttribute('type', inputDatatype)
 
     inputForm.reset()
-    inputPopup.style.display = "none"
+    inputPopup.style.display = 'none'
 
-    currentTarget.addEventListener("click", function(){
-        inputPopup.style.display = "block"
+    currentTarget.addEventListener('click', function(){
+        inputPopup.style.display = 'block'
         currentTarget = this
-        document.querySelector("#inputVariable").value = currentTarget.getAttribute("name")
+        document.querySelector('#inputVariable').value = currentTarget.getAttribute('name')
 
-        const datatypeButtons = document.getElementsByName("datatype")
+        const datatypeButtons = document.getElementsByName('datatype')
         for (let i = 0; i < datatypeButtons.length; i++) {
-            if (datatypeButtons[i].value == currentTarget.getAttribute("type")) {
+            if (datatypeButtons[i].value == currentTarget.getAttribute('type')) {
                 datatypeButtons[i].checked = true
                 break
             }
@@ -112,158 +112,139 @@ inputForm.addEventListener("submit", function(event){
     updateBranchWidth()
     updateBodyWidth()
 })
-outputForm.addEventListener("submit", function(event){
+outputForm.addEventListener('submit', function(event){
     event.preventDefault()
 
-    const outputExpression = document.querySelector("#outputExpression").value
+    const outputExpression = document.querySelector('#outputExpression').value
 
     currentTarget.innerHTML = "Output " + outputExpression
 
-    currentTarget.setAttribute("name", outputExpression)
+    currentTarget.setAttribute('name', outputExpression)
 
     outputForm.reset()
-    outputPopup.style.display = "none"
+    outputPopup.style.display = 'none'
 
-    currentTarget.addEventListener("click", function(){
-        outputPopup.style.display = "block"
+    currentTarget.addEventListener('click', function(){
+        outputPopup.style.display = 'block'
         currentTarget = this
-        document.querySelector("#outputExpression").value = currentTarget.getAttribute("name")
+        document.querySelector('#outputExpression').value = currentTarget.getAttribute('name')
     })
 
     updateBranchWidth()
     updateBodyWidth()
 })
-assignForm.addEventListener("submit", function(event){
+assignForm.addEventListener('submit', function(event){
     event.preventDefault()
 
-    const assignVariable = document.querySelector("#assignVariable").value
-    const assignExpression = document.querySelector("#assignExpression").value
+    const assignVariable = document.querySelector('#assignVariable').value
+    const assignExpression = document.querySelector('#assignExpression').value
 
-    if(assignVariable.trim() == "" || assignExpression.trim() == ""){
+    if(assignVariable.trim() == '' || assignExpression.trim() == ''){
         currentTarget.innerHTML = "Assign"
     } else {
         currentTarget.innerHTML = assignVariable + " = " + assignExpression 
     }
 
-    currentTarget.setAttribute("name", assignVariable)
-    currentTarget.setAttribute("value", assignExpression)
+    currentTarget.setAttribute('name', assignVariable)
+    currentTarget.setAttribute('value', assignExpression)
 
     assignForm.reset()
-    assignPopup.style.display = "none"
+    assignPopup.style.display = 'none'
 
-    currentTarget.addEventListener("click", function(){
-        assignPopup.style.display = "block"
+    currentTarget.addEventListener('click', function(){
+        assignPopup.style.display = 'block'
         currentTarget = this
-        document.querySelector("#assignVariable").value = currentTarget.getAttribute("name")
-        document.querySelector("#assignExpression").value = currentTarget.getAttribute("value")
+        document.querySelector('#assignVariable').value = currentTarget.getAttribute('name')
+        document.querySelector('#assignExpression').value = currentTarget.getAttribute('value')
     })
 
     updateBranchWidth()
     updateBodyWidth()
 })
-ifForm.addEventListener("submit", function(event){
+ifForm.addEventListener('submit', function(event){
     event.preventDefault()
 
-    const ifExpression = document.querySelector("#ifExpression").value
+    const ifExpression = document.querySelector('#ifExpression').value
 
-    if(ifExpression.trim() == ""){
+    if(ifExpression.trim() == ''){
         currentTarget.innerHTML = "If"
     } else {
         currentTarget.innerHTML = ifExpression
     }
 
-    currentTarget.setAttribute("condition", ifExpression)
+    currentTarget.setAttribute('condition', ifExpression)
 
     ifForm.reset()
-    ifPopup.style.display = "none"
+    ifPopup.style.display = 'none'
 
-    currentTarget.addEventListener("click", function(){
-        ifPopup.style.display = "block"
+    currentTarget.addEventListener('click', function(){
+        ifPopup.style.display = 'block'
         currentTarget = this
-        document.querySelector("#ifExpression").value = currentTarget.getAttribute("condition")
+        document.querySelector('#ifExpression').value = currentTarget.getAttribute('condition')
     })
 
-    currentTarget.style.minHeight = (currentTarget.offsetWidth / 135 * 78) + "px"
-    currentTarget.parentNode.style.minHeight = currentTarget.offsetHeight + "px"
-    currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + "px"
-    currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + "px"
+    currentTarget.style.minHeight = (currentTarget.offsetWidth / 135 * 78) + 'px'
+    currentTarget.parentNode.style.minHeight = currentTarget.offsetHeight + 'px'
+    currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
+    currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
     updateBranchWidth()
     updateBodyWidth()
 })
-whileForm.addEventListener("submit", function(event){
+whileForm.addEventListener('submit', function(event){
     event.preventDefault()
 
-    const whileExpression = document.querySelector("#whileExpression").value
+    const whileExpression = document.querySelector('#whileExpression').value
 
-    if(whileExpression.trim() == ""){
+    if(whileExpression.trim() == ''){
         currentTarget.innerHTML = "While"
     } else {
         currentTarget.innerHTML = whileExpression
     }
 
 
-    currentTarget.setAttribute("condition", whileExpression)
+    currentTarget.setAttribute('condition', whileExpression)
 
     whileForm.reset()
-    whilePopup.style.display = "none"
+    whilePopup.style.display = 'none'
 
-    currentTarget.addEventListener("click", function(){
-        whilePopup.style.display = "block"
+    currentTarget.addEventListener('click', function(){
+        whilePopup.style.display = 'block'
         currentTarget = this
-        document.querySelector("#whileExpression").value = currentTarget.getAttribute("condition")
+        document.querySelector('#whileExpression').value = currentTarget.getAttribute('condition')
     })
 
     updateBranchWidth()
     updateBodyWidth()
 })
-forForm.addEventListener("submit", function(event){
+forForm.addEventListener('submit', function(event){
     event.preventDefault()
 
-    const forVariable = document.querySelector("#forVariable").value
-    const forStartValue = document.querySelector("#forStartValue").value
-    const forEndValue = document.querySelector("#forEndValue").value
-    const forStep =  document.querySelector("#forStep").value
-    var forCondition = ""
+    const forVariable = document.querySelector('#forVariable').value
+    const forStartValue = document.querySelector('#forStartValue').value
+    const forEndValue = document.querySelector('#forEndValue').value
+    const forStep =  document.querySelector('#forStep').value
 
-    var startNum = parseInt(forStartValue)
-    var endNum = parseInt(forEndValue)
-
-    if(startNum <= endNum){
-        forCondition = `${forVariable} <= ${forEndValue}`
-    } else {
-        forCondition = `${forVariable} >= ${forEndValue}`
-    }
-
-    if(forVariable.trim() == "" || forStartValue.trim() == "" || forEndValue.trim() == "" || forStep.trim() == ""){
+    if(forVariable.trim() == '' || forStartValue.trim() == '' || forEndValue.trim() == '' || forStep.trim() == ''){
         currentTarget.innerHTML = "For"
     } else {
         currentTarget.innerHTML = forVariable + " = " + forStartValue + " to " + forEndValue + " step " + forStep 
     }
 
-    currentTarget.setAttribute(
-        "assignStatement",
-        JSON.stringify({
-            statementType: "Assignment", 
-            name: forVariable,
-            value: forStartValue,
-            nextStatement: null
-        })
-    )
-
-    currentTarget.setAttribute("condition", forCondition)
-
-    currentTarget.setAttribute("value", forStep)
+    currentTarget.setAttribute('name',forVariable)
+    currentTarget.setAttribute('forLoopStart', forStartValue)
+    currentTarget.setAttribute('forLoopStop', forEndValue)
+    currentTarget.setAttribute('forLoopStep', forStep)
 
     forForm.reset()
-    forPopup.style.display = "none"
+    forPopup.style.display = 'none'
 
-    currentTarget.addEventListener("click", function(){
-        forPopup.style.display = "block"
+    currentTarget.addEventListener('click', function(){
+        forPopup.style.display = 'block'
         currentTarget = this
-        document.querySelector("#forVariable").value = JSON.parse(currentTarget.getAttribute("assignStatement"))["name"]
-        document.querySelector("#forStartValue").value = JSON.parse(currentTarget.getAttribute("assignStatement"))["value"]
-        document.querySelector("#forEndValue").value = currentTarget.getAttribute("condition").split(" ")[2]
-        document.querySelector("#forStep").value = currentTarget.getAttribute("value")
+        document.querySelector('#forVariable').value = currentTarget.getAttribute('name')
+        document.querySelector('#forStartValue').value = currentTarget.getAttribute('forLoopStart')
+        document.querySelector('#forEndValue').value = currentTarget.getAttribute('forLoopStop')
+        document.querySelector('#forStep').value = currentTarget.getAttribute('forLoopStep')
     })
 
     updateBranchWidth()
@@ -271,82 +252,82 @@ forForm.addEventListener("submit", function(event){
 })
 
 
-var closeButtons = Array.from(document.querySelectorAll(".close-popup"))
+var closeButtons = Array.from(document.querySelectorAll('.close-popup'))
 for(let i=0; i < closeButtons.length; i++){
     var closeButton = closeButtons[i]
     switch(closeButton.parentNode.parentNode.className){
         case "inputWindow popup":
-            closeButton.addEventListener("click", () => {
-                currentTarget.addEventListener("click", function(){
-                    inputPopup.style.display = "block"
+            closeButton.addEventListener('click', () => {
+                currentTarget.addEventListener('click', function(){
+                    inputPopup.style.display = 'block'
                     currentTarget = this
                 })
-                inputPopup.style.display = "none"
+                inputPopup.style.display = 'none'
                 inputForm.reset()
             })
             break
         case"outputWindow popup":
-            closeButton.addEventListener("click", () => {   
-                currentTarget.addEventListener("click", function(){
-                    outputPopup.style.display = "block"
+            closeButton.addEventListener('click', () => {   
+                currentTarget.addEventListener('click', function(){
+                    outputPopup.style.display = 'block'
                     currentTarget = this
                 })
-                outputPopup.style.display = "none"
+                outputPopup.style.display = 'none'
                 outputForm.reset()
             })
             break
         case"declareWindow popup":
-            closeButton.addEventListener("click", () => {
-                currentTarget.addEventListener("click", function(){
-                    declarePopup.style.display = "block"
+            closeButton.addEventListener('click', () => {
+                currentTarget.addEventListener('click', function(){
+                    declarePopup.style.display = 'block'
                     currentTarget = this
                 })
-                declarePopup.style.display = "none"
+                declarePopup.style.display = 'none'
                 declareForm.reset()
             })
             break
         case"assignWindow popup":
-            closeButton.addEventListener("click", () => {
-                currentTarget.addEventListener("click", function(){
-                    assignPopup.style.display = "block"
+            closeButton.addEventListener('click', () => {
+                currentTarget.addEventListener('click', function(){
+                    assignPopup.style.display = 'block'
                     currentTarget = this
                 })
-                assignPopup.style.display = "none"
+                assignPopup.style.display = 'none'
                 assignForm.reset()
             })
             break
         case"ifWindow popup":
-            closeButton.addEventListener("click", () => {
-                currentTarget.addEventListener("click", function(){
-                    ifPopup.style.display = "block"
+            closeButton.addEventListener('click', () => {
+                currentTarget.addEventListener('click', function(){
+                    ifPopup.style.display = 'block'
                     currentTarget = this
                 })
-                ifPopup.style.display = "none"
+                ifPopup.style.display = 'none'
                 ifForm.reset()
             })
             break
         case"whileWindow popup":
-            closeButton.addEventListener("click", () => {
-                currentTarget.addEventListener("click", function(){
-                    whilePopup.style.display = "block"
+            closeButton.addEventListener('click', () => {
+                currentTarget.addEventListener('click', function(){
+                    whilePopup.style.display = 'block'
                     currentTarget = this
                 })
-                whilePopup.style.display = "none"
+                whilePopup.style.display = 'none'
                 whileForm.reset()
             })
             break
         case"forWindow popup":
-            closeButton.addEventListener("click", () => {
-                currentTarget.addEventListener("click", function(){
-                    forPopup.style.display = "block"
+            closeButton.addEventListener('click', () => {
+                currentTarget.addEventListener('click', function(){
+                    forPopup.style.display = 'block'
                     currentTarget = this
                 })
-                forPopup.style.display = "none"
+                forPopup.style.display = 'none'
                 forForm.reset()
             })
             break
         default:
-            console.log("error")
+            console.log('error')
     }
 }
 
@@ -366,8 +347,8 @@ function compareDepth(a, b) {
 
 function iterateNodes(node) {
     // Perform some action on the current node
-    if(node.className.includes("block")){
-        node.setAttribute("id", id)
+    if(node.className.includes('block')){
+        node.setAttribute('id', id)
         id++
     }
   
@@ -382,21 +363,21 @@ function iterateNodes(node) {
 }
   
 function getKeyValue(node) {
-    if(node.className.includes("block")){
+    if(node.className.includes('block')){
         var key = node.id
         var value = {}
         switch (node.className) {
             case "input parallelogram block":
-                value["statementType"] = "Input"
+                value["StatementType"] = "Input"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
                 } else if(nextNode.nextSibling.className == "oval end block"){
                     value["nextStatement"] = nextNode.nextSibling.id
                 } else {
-                    if(nextNode.firstChild.className.includes("block")){
+                    if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -404,26 +385,26 @@ function getKeyValue(node) {
                     value["nextStatement"] = nextID
                 } 
 
-                var inputVariable = node.getAttribute("name")
-                var inputDatatype = node.getAttribute("type")
+                var inputVariable = node.getAttribute('name')
+                var inputDatatype = node.getAttribute('type')
                 if(inputVariable === null){
-                    inputVariable = ""
+                    inputVariable = ''
                 }
                 value["name"] = inputVariable
                 value["type"] = inputDatatype
 
                 break
             case "output parallelogram block":
-                value["statementType"] = "Output"
+                value["StatementType"] = "Output"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
                 } else if(nextNode.nextSibling.className == "oval end block"){
                     value["nextStatement"] = nextNode.nextSibling.id
                 } else {
-                    if(nextNode.firstChild.className.includes("block")){
+                    if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -431,24 +412,24 @@ function getKeyValue(node) {
                     value["nextStatement"] = nextID
                 } 
 
-                var outputExpression = node.getAttribute("name")
+                var outputExpression = node.getAttribute('name')
                 if(outputExpression === null){
-                    outputExpression = ""
+                    outputExpression = ''
                 }
                 value["name"] = outputExpression
 
                 break
             case "assign rectangle block":
-                value["statementType"] = "Assignment"
+                value["StatementType"] = "Assignment"
                 var nextNode = node.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
                 } else if(nextNode.nextSibling.className == "oval end block"){
                     value["nextStatement"] = nextNode.nextSibling.id
                 } else {
-                    if(nextNode.firstChild.className.includes("block")){
+                    if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -456,29 +437,29 @@ function getKeyValue(node) {
                     value["nextStatement"] = nextID
                 } 
 
-                var assignVariable = node.getAttribute("name")
-                var assignExpression = node.getAttribute("value")
+                var assignVariable = node.getAttribute('name')
+                var assignExpression = node.getAttribute('value')
                 if(assignVariable === null){
-                    assignVariable = ""
+                    assignVariable = ''
                 }
                 if(assignExpression === null){
-                    assignExpression = ""
+                    assignExpression = ''
                 }
                 value["name"] = assignVariable
                 value["value"] = assignExpression
 
                 break
             case "rhombus block":
-                value["statementType"] = "Conditional"
+                value["StatementType"] = "Conditional"
                 var nextNode = node.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
                 } else if(nextNode.nextSibling.className == "oval end block"){
                     value["nextStatement"] = nextNode.nextSibling.id
                 } else {
-                    if(nextNode.firstChild.className.includes("block")){
+                    if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -490,9 +471,9 @@ function getKeyValue(node) {
                 if(trueNode.childNodes[1] === undefined){
                     value["trueStatement"] = null
                 } else {
-                    if(trueNode.childNodes[1].firstChild.className.includes("block")){
+                    if(trueNode.childNodes[1].firstChild.className.includes('block')){
                         var nextID = trueNode.childNodes[1].firstChild.id
-                    } else if(trueNode.childNodes[1].firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(trueNode.childNodes[1].firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = trueNode.childNodes[1].firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = trueNode.childNodes[1].firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -502,9 +483,9 @@ function getKeyValue(node) {
                 if(falseNode.childNodes[1] === undefined){
                     value["falseStatement"] = null
                 } else {
-                    if(falseNode.childNodes[1].firstChild.className.includes("block")){
+                    if(falseNode.childNodes[1].firstChild.className.includes('block')){
                         var nextID = falseNode.childNodes[1].firstChild.id
-                    } else if(falseNode.childNodes[1].firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(falseNode.childNodes[1].firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = falseNode.childNodes[1].firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = falseNode.childNodes[1].firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -512,24 +493,24 @@ function getKeyValue(node) {
                     value["falseStatement"] = nextID
                 } 
 
-                var ifCondition = node.getAttribute("condition")
+                var ifCondition = node.getAttribute('condition')
                 if(ifCondition === null){
-                    ifCondition = ""
+                    ifCondition = ''
                 }
                 value["condition"] = ifCondition
 
                 break
             case "while hexagon block":
-                value["statementType"] = "WhileLoop"
+                value["StatementType"] = "WhileLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
                 } else if(nextNode.nextSibling.className == "oval end block"){
                     value["nextStatement"] = nextNode.nextSibling.id
                 } else {
-                    if(nextNode.firstChild.className.includes("block")){
+                    if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -540,9 +521,9 @@ function getKeyValue(node) {
                 if(loopBody.childNodes[1] === undefined){
                     value["loopStatement"] = null
                 } else {
-                    if(loopBody.childNodes[1].firstChild.className.includes("block")){
+                    if(loopBody.childNodes[1].firstChild.className.includes('block')){
                         var nextID = loopBody.childNodes[1].firstChild.id
-                    } else if(loopBody.childNodes[1].firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(loopBody.childNodes[1].firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = loopBody.childNodes[1].firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = loopBody.childNodes[1].firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -550,24 +531,24 @@ function getKeyValue(node) {
                     value["loopStatement"] = nextID
                 } 
 
-                var whileCondition = node.getAttribute("condition")
+                var whileCondition = node.getAttribute('condition')
                 if(whileCondition === null){
-                    whileCondition = ""
+                    whileCondition = ''
                 }
                 value["condition"] = whileCondition
 
                 break
             case "for hexagon block":
-                value["statementType"] = "ForLoop"
+                value["StatementType"] = "ForLoop"
                 var nextNode = node.parentNode.parentNode.parentNode.nextSibling.nextSibling
                 if(nextNode === null){
                     value["nextStatement"] = null
                 } else if(nextNode.nextSibling.className == "oval end block"){
                     value["nextStatement"] = nextNode.nextSibling.id
                 } else {
-                    if(nextNode.firstChild.className.includes("block")){
+                    if(nextNode.firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.id
-                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -578,9 +559,9 @@ function getKeyValue(node) {
                 if(loopBody.childNodes[1] === undefined){
                     value["loopStatement"] = null
                 } else {
-                    if(loopBody.childNodes[1].firstChild.className.includes("block")){
+                    if(loopBody.childNodes[1].firstChild.className.includes('block')){
                         var nextID = loopBody.childNodes[1].firstChild.id
-                    } else if(loopBody.childNodes[1].firstChild.childNodes[1].firstChild.className.includes("block")){
+                    } else if(loopBody.childNodes[1].firstChild.childNodes[1].firstChild.className.includes('block')){
                         var nextID = loopBody.childNodes[1].firstChild.childNodes[1].firstChild.id
                     } else {
                         var nextID = loopBody.childNodes[1].firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -588,22 +569,20 @@ function getKeyValue(node) {
                     value["loopStatement"] = nextID
                 } 
 
-                const assignStatement = JSON.parse(node.getAttribute("assignStatement"))
-                const forCondition = node.getAttribute("condition")
-                const forValue = node.getAttribute("value")
-                value["assignStatement"] = assignStatement
-                value["condition"] = forCondition
-                value["value"] = forValue
+                value["name"] = node.getAttribute('name')
+                value["forLoopStart"] = node.getAttribute('forLoopStart')
+                value["forLoopStop"] = node.getAttribute('forLoopStop')
+                value["forLoopStep"] = node.getAttribute('forLoopStep')
 
                 break
             case "oval begin block":
-                value["statementType"] = "Begin"
+                value["StatementType"] = "Begin"
                 var nextNode = node.nextSibling.nextSibling.nextSibling
                 if(nextNode.nextSibling.className == "oval end block"){
                     var nextID = nextNode.nextSibling.id
-                } else if(nextNode.firstChild.className.includes("block")){
+                } else if(nextNode.firstChild.className.includes('block')){
                     var nextID = nextNode.firstChild.id
-                } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes("block")){
+                } else if(nextNode.firstChild.childNodes[1].firstChild.className.includes('block')){
                     var nextID = nextNode.firstChild.childNodes[1].firstChild.id
                 } else {
                     var nextID = nextNode.firstChild.childNodes[1].childNodes[2].firstChild.id
@@ -611,11 +590,11 @@ function getKeyValue(node) {
                 value["nextStatement"] = nextID
                 break
             case "oval end block":
-                value["statementType"] = "End"
+                value["StatementType"] = "End"
                 value["nextStatement"] = null
                 break
             default:
-                console.log("error");
+                console.log('error');
         }
         dict[key] = value
     }
@@ -639,12 +618,12 @@ function updateDict(){
 }
 
 function updateBranchWidth(){
-    var nodes = Array.from(document.querySelectorAll(".rhombus, .hexagon"));
+    var nodes = Array.from(document.querySelectorAll('.rhombus, .hexagon'));
     nodes.sort(compareDepth);
     for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
         if(node.parentNode != parentPlace && !node.parentNode.className.includes("blockDescription")){
-            if(node.className.includes("rhombus")){
+            if(node.className.includes('rhombus')){
                 var leftBranch = node.parentNode.parentNode.previousSibling.childNodes[1]
                 var rightBranch = node.parentNode.parentNode.nextSibling.childNodes[1]
                 var leftWidth = 0
@@ -656,8 +635,8 @@ function updateBranchWidth(){
                     rightWidth = Math.max(rightWidth, rightBranch.childNodes[i].scrollWidth)
                 }
                 var maxWidth = Math.max(leftWidth, rightWidth)
-                leftBranch.style.minWidth = maxWidth + "px"
-                rightBranch.style.minWidth = maxWidth + "px"
+                leftBranch.style.minWidth = maxWidth + 'px'
+                rightBranch.style.minWidth = maxWidth + 'px'
             } else {
                 var leftBranch = node.parentNode.previousSibling
                 var rightBranch = node.parentNode.nextSibling.childNodes[1]
@@ -665,8 +644,8 @@ function updateBranchWidth(){
                 for(let i=0; i < rightBranch.childNodes.length; i++){
                     rightWidth = Math.max(rightWidth, rightBranch.childNodes[i].scrollWidth)
                 }
-                leftBranch.style.minWidth = rightWidth + "px"
-                rightBranch.style.minWidth = rightWidth + "px"
+                leftBranch.style.minWidth = rightWidth + 'px'
+                rightBranch.style.minWidth = rightWidth + 'px'
             }
         }
     }
@@ -679,7 +658,7 @@ function updateBodyWidth(){
             bodyWidth = Math.max(bodyWidth, dropPlace.childNodes[i].scrollWidth)
         }
     }
-    dropPlace.style.minWidth = bodyWidth + "px"
+    dropPlace.style.minWidth = bodyWidth + 'px'
 }
 
 function addBackground(node){
@@ -687,20 +666,20 @@ function addBackground(node){
     var roundJoint = document.createElement("div")
     verticalJoint.classList.add("verticalJoint")
     roundJoint.classList.add("roundJoint")
-    verticalJoint.style.height = "100%"
-    verticalJoint.style.zIndex = "0"
-    roundJoint.style.zIndex = "1"
+    verticalJoint.style.height = '100%'
+    verticalJoint.style.zIndex = '0'
+    roundJoint.style.zIndex = '1'
     node.appendChild(verticalJoint)
     node.appendChild(roundJoint)
 }
 
 function addEventListener(node) {
     const dropFunction = function(){
-        if(I && node.getAttribute("full") === null){
+        if(I && node.getAttribute('full') === null){
             inBody = true
-            node.setAttribute("full", true)
-            node.style.background = "transparent"
-            currentTarget.style.margin = "0"
+            node.setAttribute('full', true)
+            node.style.background = 'transparent'
+            currentTarget.style.margin = '0'
             if(currentTarget.className == "rhombus block"){
                 var aboveBlock = document.createElement("div")
                 var leftCondition = document.createElement("div")
@@ -753,10 +732,10 @@ function addEventListener(node) {
                 addBackground(bottomBlock)
                 addBackground(aboveBlock)
 
-                leftBlock.style.flex = "1"
-                rightBlock.style.flex = "1"
-                aboveBlock.style.flex = "1"
-                bottomBlock.style.flex = "1"
+                leftBlock.style.flex = '1'
+                rightBlock.style.flex = '1'
+                aboveBlock.style.flex = '1'
+                bottomBlock.style.flex = '1'
 
                 leftCondition.classList.add("codeBlock")
                 rightCondition.classList.add("codeBlock")
@@ -800,7 +779,7 @@ function addEventListener(node) {
                 leftCondition.appendChild(leftBlock)
                 rightCondition.appendChild(rightBlock)
 
-                verticalJoint2.style.top = "0"
+                verticalJoint2.style.top = '0'
                 seven.appendChild(horizontalJoint1)
                 seven.appendChild(verticalJoint1)
                 seven.appendChild(trueLabel)
@@ -811,12 +790,12 @@ function addEventListener(node) {
                 left.appendChild(seven)
                 left.style.alignSelf="stretch"
 
-                horizontalJoint5.style.width = "100%"
-                verticalJoint6.style.top = "0"
-                verticalJoint6.style.zIndex = "0"
-                horizontalJoint6.style.width = "100%"
-                horizontalJoint6.style.zIndex = "0"
-                currentTarget.style.zIndex = "1"
+                horizontalJoint5.style.width = '100%'
+                verticalJoint6.style.top = '0'
+                verticalJoint6.style.zIndex = '0'
+                horizontalJoint6.style.width = '100%'
+                horizontalJoint6.style.zIndex = '0'
+                currentTarget.style.zIndex = '1'
                 two.appendChild(currentTarget)
                 two.appendChild(horizontalJoint6)
                 two.appendChild(verticalJoint6)
@@ -827,9 +806,9 @@ function addEventListener(node) {
                 middle.appendChild(two)
                 middle.style.alignSelf="stretch"
 
-                horizontalJoint4.style.left = "0"
-                verticalJoint3.style.top = "0"
-                horizontalJoint3.style.left = "0"
+                horizontalJoint4.style.left = '0'
+                verticalJoint3.style.top = '0'
+                horizontalJoint3.style.left = '0'
                 three.appendChild(horizontalJoint3)
                 three.appendChild(verticalJoint3)
                 nine.appendChild(horizontalJoint4)
@@ -848,13 +827,13 @@ function addEventListener(node) {
                 node.parentNode.insertBefore(aboveBlock, this)
                 node.appendChild(ifStatement)
                 
-                currentTarget.parentNode.style.minHeight = currentTarget.offsetHeight + "px"
-                currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + "px"
-                currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + "px"
+                currentTarget.parentNode.style.minHeight = currentTarget.offsetHeight + 'px'
+                currentTarget.parentNode.parentNode.previousSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
+                currentTarget.parentNode.parentNode.nextSibling.childNodes[2].style.minHeight = currentTarget.offsetHeight + 'px'
 
-                currentTarget.style.minWidth = "150px"
-                currentTarget.style.minHeight = currentTarget.offsetWidth / 150 * 86 + "px"
-                currentTarget.style.fontSize = "100%"
+                currentTarget.style.minWidth = '150px'
+                currentTarget.style.minHeight = currentTarget.offsetWidth / 150 * 86 + 'px'
+                currentTarget.style.fontSize = '100%'
 
                 const childNodes = node.childNodes;
                 for (let i = childNodes.length - 2; i >= 0; i--) {
@@ -895,9 +874,9 @@ function addEventListener(node) {
                 addBackground(bottomBlock)
                 addBackground(loopBlock)
 
-                loopBlock.style.flex = "1"
-                aboveBlock.style.flex = "1"
-                bottomBlock.style.flex = "1"
+                loopBlock.style.flex = '1'
+                aboveBlock.style.flex = '1'
+                bottomBlock.style.flex = '1'
 
                 aboveBlock.classList.add("holder")
                 bottomBlock.classList.add("holder")
@@ -926,15 +905,15 @@ function addEventListener(node) {
 
                 loopBody.appendChild(loopBlock)
 
-                left.style.minWidth = "50px"
+                left.style.minWidth = '50px'
                 
-                horizontalJoint3.style.width = "calc(50% - 25px)"
-                verticalJoint3.style.height = "100%"
-                verticalJoint4.style.height = "100%"
-                verticalJoint5.style.right = "calc(50% - 29px)"
-                verticalJoint5.style.top = "0"
-                verticalJoint6.style.right = "calc(50% - 29px)"
-                verticalJoint6.style.height = "100%"
+                horizontalJoint3.style.width = 'calc(50% - 25px)'
+                verticalJoint3.style.height = '100%'
+                verticalJoint4.style.height = '100%'
+                verticalJoint5.style.right = 'calc(50% - 29px)'
+                verticalJoint5.style.top = '0'
+                verticalJoint6.style.right = 'calc(50% - 29px)'
+                verticalJoint6.style.height = '100%'
                 three.appendChild(horizontalJoint3)
                 three.appendChild(verticalJoint3)
                 three.appendChild(verticalJoint5)
@@ -944,13 +923,13 @@ function addEventListener(node) {
                 middle.appendChild(three)
                 middle.appendChild(five)
                 middle.style.alignSelf="stretch"
-                three.style.maxHeight = "50px"
-                three.style.alignSelf = "stretch"
-                five.style.alignSelf = "stretch"
+                three.style.maxHeight = '50px'
+                three.style.alignSelf = 'stretch'
+                five.style.alignSelf = 'stretch'
 
-                horizontalJoint1.style.left = "0"
-                horizontalJoint2.style.left = "0"
-                verticalJoint2.style.top = "0"
+                horizontalJoint1.style.left = '0'
+                horizontalJoint2.style.left = '0'
+                verticalJoint2.style.top = '0'
                 six.appendChild(horizontalJoint1)
                 six.appendChild(verticalJoint1)
                 two.appendChild(horizontalJoint2)
@@ -958,9 +937,9 @@ function addEventListener(node) {
                 right.appendChild(two)
                 right.appendChild(loopBody)
                 right.appendChild(six)
-                six.style.minHeight = "50px"
-                six.style.alignSelf = "stretch"
-                two.style.alignSelf = "stretch"
+                six.style.minHeight = '50px'
+                six.style.alignSelf = 'stretch'
+                two.style.alignSelf = 'stretch'
 
                 loop.appendChild(left)
                 loop.appendChild(middle)
@@ -970,9 +949,9 @@ function addEventListener(node) {
                 node.parentNode.insertBefore(aboveBlock, this)
                 node.appendChild(loop)
                 
-                currentTarget.style.minHeight = "50px"
-                currentTarget.style.minWidth = "150px"
-                currentTarget.style.fontSize = "100%"
+                currentTarget.style.minHeight = '50px'
+                currentTarget.style.minWidth = '150px'
+                currentTarget.style.fontSize = '100%'
 
                 const childNodes = node.childNodes;
                 for (let i = childNodes.length - 2; i >= 0; i--) {
@@ -989,41 +968,41 @@ function addEventListener(node) {
                 belowBlock.classList.add("holder")
                 addBackground(aboveBlock)
                 addBackground(belowBlock)
-                aboveBlock.style.flex = "1"
-                belowBlock.style.flex = "1"
+                aboveBlock.style.flex = '1'
+                belowBlock.style.flex = '1'
                 node.parentNode.insertBefore(aboveBlock, this)
                 node.parentNode.insertBefore(belowBlock, this.nextSibling)
 
-                currentTarget.style.minHeight = "50px"
-                currentTarget.style.minWidth = "135px"
-                currentTarget.style.fontSize = "100%"
+                currentTarget.style.minHeight = '50px'
+                currentTarget.style.minWidth = '135px'
+                currentTarget.style.fontSize = '100%'
             }
-            node.style.flex = ""
+            node.style.flex = ''
             if(currentBlock == parentPlace){
                 switch (currentTarget.className) {
                     case "input parallelogram block":
-                        inputPopup.style.display = "block"
+                        inputPopup.style.display = 'block'
                         break
                     case "output parallelogram block":
-                        outputPopup.style.display = "block"
+                        outputPopup.style.display = 'block'
                         break
                     case "declare rectangle block":
-                        declarePopup.style.display = "block"
+                        declarePopup.style.display = 'block'
                         break
                     case "assign rectangle block":
-                        assignPopup.style.display = "block"
+                        assignPopup.style.display = 'block'
                         break
                     case "rhombus block":
-                        ifPopup.style.display = "block"
+                        ifPopup.style.display = 'block'
                         break
                     case "while hexagon block":
-                        whilePopup.style.display = "block"
+                        whilePopup.style.display = 'block'
                         break
                     case "for hexagon block":
-                        forPopup.style.display = "block"
+                        forPopup.style.display = 'block'
                         break
                     default:
-                        console.log("error");
+                        console.log('error');
                 }
                 currentTarget.innerHTML = ""
             }
@@ -1044,9 +1023,9 @@ function addEventListener(node) {
             I = false
         }
     }
-    node.addEventListener("dragover", function(e){
+    node.addEventListener('dragover', function(e){
         e.preventDefault()
-        if(node.childNodes[0].className != "branch-statement" && node.getAttribute("full") === null){
+        if(node.childNodes[0].className != "branch-statement" && node.getAttribute('full') === null){
             if(currentBlock != parentPlace){
                 if(currentTarget.className == "rhombus block"){
                     if(leftBranch.contains(node)){
@@ -1064,10 +1043,10 @@ function addEventListener(node) {
             }
             I = true
             node.insertBefore(currentTarget, node.firstChild)
-            currentTarget.style.zIndex = "2"
+            currentTarget.style.zIndex = '2'
             if(first){
                 var cloneShape = currentTarget.cloneNode(true)
-                cloneShape.addEventListener("dragstart", function(e){
+                cloneShape.addEventListener('dragstart', function(e){
                     inBody = false 
                     currentTarget = this
                     currentBlock = this.parentNode
@@ -1086,102 +1065,73 @@ function addEventListener(node) {
             }
         }
     })
-    node.addEventListener("drop", dropFunction)
+    node.addEventListener('drop', dropFunction)
 }
 
 addBackground(blockHolder)
 
-const holders = document.querySelectorAll(".holder");
+const holders = document.querySelectorAll('.holder');
 for (let i = 0; i < holders.length; i++) {
   const holder = holders[i];
   addEventListener(holder)
 }
 
-const blockNodes = document.querySelectorAll("[class*="block"]");
+const blockNodes = document.querySelectorAll('[class*="block"]');
 blockNodes.forEach(node => {
-    if(!node.className.includes("oval") && !node.className.includes("display") && node.parentNode != parentPlace){
+    if(!node.className.includes('oval') && !node.className.includes('display') && node.parentNode != parentPlace){
         switch (node.className) {
             case "input parallelogram block":
-                node.addEventListener("click", function(){
-                    inputPopup.style.display = "block"
+                node.addEventListener('click', function(){
+                    inputPopup.style.display = 'block'
                     currentTarget = this
-                    document.querySelector("#inputVariable").value = currentTarget.getAttribute("name")
-                })
-                break
-            case "output parallelogram block":
-                node.addEventListener("click", function(){
-                    outputPopup.style.display = "block"
-                    currentTarget = this
-                    document.querySelector("#outputExpression").value = currentTarget.getAttribute("name")
-                })
-                break
-            case "declare rectangle block":
-                node.addEventListener("click", function(){
-                    declarePopup.style.display = "block"
-                    currentTarget = this
-                    document.querySelector("#declareVariable").value = currentTarget.getAttribute("name")
-            
-                    const datatypeButtons = document.getElementsByName("datatype")
+                    document.querySelector('#inputVariable').value = currentTarget.getAttribute('name')
+
+                    const datatypeButtons = document.getElementsByName('datatype')
                     for (let i = 0; i < datatypeButtons.length; i++) {
-                        if (datatypeButtons[i].value == currentTarget.getAttribute("type")) {
+                        if (datatypeButtons[i].value == currentTarget.getAttribute('type')) {
                             datatypeButtons[i].checked = true
                             break
                         }
                     }
                 })
                 break
-            case "assign rectangle block":
-                node.addEventListener("click", function(){
-                    assignPopup.style.display = "block"
+            case "output parallelogram block":
+                node.addEventListener('click', function(){
+                    outputPopup.style.display = 'block'
                     currentTarget = this
-                    document.querySelector("#assignVariable").value = currentTarget.getAttribute("name")
-                    document.querySelector("#assignExpression").value = currentTarget.getAttribute("value")
+                    document.querySelector('#outputExpression').value = currentTarget.getAttribute('name')
+                })
+                break
+            case "assign rectangle block":
+                node.addEventListener('click', function(){
+                    assignPopup.style.display = 'block'
+                    currentTarget = this
+                    document.querySelector('#assignVariable').value = currentTarget.getAttribute('name')
+                    document.querySelector('#assignExpression').value = currentTarget.getAttribute('value')
                 })
                 break
             case "rhombus block":
-                node.addEventListener("click", function(){
-                    ifPopup.style.display = "block"
+                node.addEventListener('click', function(){
+                    ifPopup.style.display = 'block'
                     currentTarget = this
-                    document.querySelector("#ifExpression").value = currentTarget.getAttribute("condition")
+                    document.querySelector('#ifExpression').value = currentTarget.getAttribute('condition')
                 })
                 break
             case "while hexagon block":
-                node.addEventListener("click", function(){
-                    whilePopup.style.display = "block"
+                node.addEventListener('click', function(){
+                    whilePopup.style.display = 'block'
                     currentTarget = this
-                    document.querySelector("#whileExpression").value = currentTarget.getAttribute("condition")
+                    document.querySelector('#whileExpression').value = currentTarget.getAttribute('condition')
                 })
                 break
             case "for hexagon block":
-                node.addEventListener("click", function(){
-                    forPopup.style.display = "block"
+                node.addEventListener('click', function(){
+                    forPopup.style.display = 'block'
                     currentTarget = this
-                    document.querySelector("#forVariable").value = JSON.parse(currentTarget.getAttribute("declareStatement"))["name"]
-                    document.querySelector("#forStartValue").value = JSON.parse(currentTarget.getAttribute("assignStatement"))["value"]
-                    document.querySelector("#forEndValue").value = currentTarget.getAttribute("condition").split(" ")[2]
-                    document.querySelector("#forStep").value = JSON.parse(currentTarget.getAttribute("forLoopStatement"))["value"].split(" ")[2]
-            
-                    const forDatatypeButtons = document.getElementsByName("forDatatype")
-                    const forDirectionButtons = document.getElementsByName("forDirection")
-                    const datatype = JSON.parse(currentTarget.getAttribute("declareStatement"))["type"]
-                    const operator = JSON.parse(currentTarget.getAttribute("forLoopStatement"))["value"].split(" ")[1]
-                    var direction = "Increasing"
-                    if(operator == "-"){
-                        direction = "Decreasing"
-                    }
-            
-                    for (let i = 0; i < forDatatypeButtons.length; i++) {
-                        if (forDatatypeButtons[i].value == datatype) {
-                            forDatatypeButtons[i].checked = true
-                            break
-                        }
-                    }
-                    for (let i = 0; i < forDirectionButtons.length; i++) {
-                        if (forDirectionButtons[i].value == direction) {
-                            forDirectionButtons[i].checked = true
-                            break
-                        }
-                    }
+                    document.querySelector('#forVariable').value = currentTarget.getAttribute('name')
+                    document.querySelector('#forStartValue').value = currentTarget.getAttribute('forLoopStart')
+                    document.querySelector('#forEndValue').value = currentTarget.getAttribute('forLoopStop')
+                    document.querySelector('#forStep').value = currentTarget.getAttribute('forLoopStep')
                 })
                 break
             default:
@@ -1189,10 +1139,10 @@ blockNodes.forEach(node => {
     }
 });
   
-body.addEventListener("dragover", function(e){
+body.addEventListener('dragover', function(e){
     e.preventDefault()
 })
-body.addEventListener("drop", function(e){
+body.addEventListener('drop', function(e){
     if(I && !inBody){
         if(currentBlock == parentPlace){
             currentTarget.remove()
@@ -1204,7 +1154,7 @@ body.addEventListener("drop", function(e){
 })
 
 targetList.forEach(target => {
-    target.addEventListener("dragstart", function(e){
+    target.addEventListener('dragstart', function(e){
         inBody = false 
         currentTarget = this
         currentBlock = this.parentNode
@@ -1219,13 +1169,13 @@ targetList.forEach(target => {
         }
     })
 })
-parentPlace.addEventListener("dragover", function(e){
+parentPlace.addEventListener('dragover', function(e){
     e.preventDefault()
 })
-parentPlace.addEventListener("drop", function(e){
+parentPlace.addEventListener('drop', function(e){
     if(!parentPlace.contains(currentTarget)){
         if(currentBlock != parentPlace){
-            if(currentTarget.className.includes("hexagon")){
+            if(currentTarget.className.includes('hexagon')){
                 currentBlock.parentNode.parentNode.nextSibling.remove()
                 currentBlock.parentNode.parentNode.remove()
             }
@@ -1245,55 +1195,3 @@ parentPlace.addEventListener("drop", function(e){
 })
 
 updateDict()
-
-function run() {
-    updateDict()
-    fetch("/api/v1/algorithms/update", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dict)
-    })
-    .then(function(response) {
-        if (response.ok) {
-            const sse = new EventSource("/api/v1/algorithms/run");
-            let getId = true;
-            let id = null;
-
-            sse.onmessage = function(message) {
-                if (getId) {
-                    id = message.data;
-                    getId = false;
-                }
-                else if (message.data == id) {
-                    sse.close();
-                }
-                else {
-                    console.log(message.data);
-                }
-            };
-        }
-    });
-}
-
-function generate() {
-    dict = updateDict()
-    console.log(dict)
-    fetch(url + "generate", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dict)
-    })
-    .then(function(response) {
-        if (!response.ok) {
-            
-        }
-        return response.json();
-    })
-    .then(function(data) {
-        return;
-    });
-}
