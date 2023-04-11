@@ -178,14 +178,14 @@ input{
     background: linear-gradient(#5f1eec, #ea1737);
 }
 .cpp{
-    background: url(../resource/c++.png);
+    background: url(/resource/c++.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     color: white;
     border: none;
-    height: 7vh;
-    width: 3vw;
+    height: 7.5vh;
+    width: 7.5vh;
     cursor: pointer;
     margin: 1vw 35vw 1vw 1vw;
 }
@@ -197,7 +197,7 @@ input{
     width: 14.2vw;
     background-color: #C1AEFC;
     padding: 2vh;
-    padding-top: 18vh;
+    padding-top: 13vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -381,7 +381,7 @@ input{
 }
 .rhombus {
     min-height: 14.1vh;
-    background: url(../resource/rhombus.png);
+    background: url(/resource/rhombus.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -403,7 +403,7 @@ input{
 .hexagon { 
     margin: 4vh 0;
     min-width: 12vw;
-    background: url(../resource/hexagon.png);
+    background: url(/resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -426,7 +426,7 @@ input{
 }
 .while{
     margin: 4vh 0;
-    background: url(../resource/hexagon.png);
+    background: url(/resource/hexagon.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -434,7 +434,7 @@ input{
 }
 .for{
     margin: 4vh 3vw;
-    background: url(../resource/hexagonred.png);
+    background: url(/resource/hexagonred.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -759,20 +759,20 @@ input{
 .startValueLabel{
     position: absolute;
     left: 5%;
-    top: 35%;
+    top: 45%;
     font-size: 3vh;
 }
 .endValueLabel{
     position: absolute;
     left: 52%;
-    top: 35%;
+    top: 45%;
     font-size: 3vh;
 }
 .startValueBar{
     position: absolute;
     caret-color: auto;
     left: 5%;
-    top: 45%;
+    top: 55%;
     height: 9%;
     width: 40%;
     font-size: 3vh;
@@ -781,7 +781,7 @@ input{
     position: absolute;
     caret-color: auto;
     left: 52%;
-    top: 45%;
+    top: 55%;
     height: 9%;
     width: 40%;
     font-size: 3vh;
@@ -806,15 +806,15 @@ input{
 }
 .forStepLabel{
     position: absolute;
-    left: 5%;
-    top: 60%;
+    left: 52%;
+    top: 15%;
     font-size: 3vh;
 }
 .forStepBar{
     position: absolute;
     caret-color: auto;
-    left: 5%;
-    top: 70%;
+    left: 52%;
+    top: 25%;
     height: 9%;
     width: 40%;
     font-size: 3vh;

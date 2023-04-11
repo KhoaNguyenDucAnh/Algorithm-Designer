@@ -10,12 +10,12 @@
 </head>
 <body>
   <div class="inputWindow popup">
-    <div class="short popup-content">
+    <div class="tall popup-content">
       <button class="close-popup">X</button>
-      <div class="short-blockName">
+      <div class="tall-blockName">
         <p>Input Statement</p>
       </div>
-      <div class="short-blockDescription">
+      <div class="tall-blockDescription">
         <div class="input display parallelogram block" id="parallelogram" style="font-size: 3vh;">
           <p>Input</p>
         </div>
@@ -23,11 +23,28 @@
           <p class="desStatement">An Input Statement reads a value from the keyboard and stores the result in a variable</p>
         </div>
       </div>
-      <div class="short-body">
+      <div class="tall-body">
         <form class="inputForm">
           <label for="inputVariable" class="popupLabel">Enter a variable name below:</label>
-          <input autocomplete="off" type="text" style="width: 90%; height: 18%; top: 35%;" class="variableBar" id="inputVariable" name="inputVariable">
-          <button type="submit" class="okButton" style="height: 23%;">OK</button>
+          <input autocomplete="off" type="text" style="width: 90%;" class="variableBar" id="inputVariable" name="inputVariable">
+          <button type="submit" class="okButton">OK</button>
+          <label class="typeLabel">Type:</label>
+          <label class="typeString">
+            <input type="radio" name="datatype" value="String">
+            String
+          </label>
+          <label class="typeInteger">
+            <input type="radio" name="datatype" value="Integer">
+            Integer
+          </label>
+          <label class="typeDouble">
+            <input type="radio" name="datatype" value="Float">
+            Float
+          </label>
+          <label class="typeBoolean">
+            <input type="radio" name="datatype" value="Boolean">
+            Boolean
+          </label>
         </form>
       </div>
     </div>
@@ -51,46 +68,6 @@
           <label for="outputExpression" class="popupLabel">Enter an expression below:</label><br>
           <textarea autocomplete="off" class="outputTextarea" id="outputExpression" name="expression" cols="48" rows="8"></textarea>
           <button type="submit" class="okButton">OK</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="declareWindow popup">
-    <div class="tall popup-content">
-      <button class="close-popup">X</button>
-      <div class="tall-blockName">
-        <p>Declare Statement</p>
-      </div>
-      <div class="tall-blockDescription">
-        <div class="declare display rectangle block" id="rectangle" style="font-size: 3vh;">
-          <p>Declare</p>
-        </div>
-        <div class="description">
-          <p class="desStatement">A Declare Statement is used to create variables. These are used to store data while the program runs</p>
-        </div>
-      </div>
-      <div class="tall-body">
-        <form class="declareForm">
-          <label for="declareVariable" class="popupLabel">Variable Names:</label><br>
-          <input autocomplete="off" type="text" id="declareVariable" class="variableBar" name="declareVariable">
-          <button type="submit" class="okButton">OK</button>
-          <label class="typeLabel">Type:</label>
-          <label class="typeString">
-            <input type="radio" name="datatype" value="String">
-            String
-          </label>
-          <label class="typeInteger">
-            <input type="radio" name="datatype" value="Integer">
-            Integer
-          </label>
-          <label class="typeDouble">
-            <input type="radio" name="datatype" value="Double">
-            Double
-          </label>
-          <label class="typeBoolean">
-            <input type="radio" name="datatype" value="Boolean">
-            Boolean
-          </label>
         </form>
       </div>
     </div>
@@ -183,31 +160,13 @@
       </div>
       <div class="tall-body">
         <form class="forForm">
-          <label for="forVariable" class="popupLabel">Variable:</label><br>
-          <input autocomplete="off" type="text" style="width: 40%;" class="variableBar" id="forVariable" name="forVariable">
+          <label for="forVariable" style="top: 15%;" class="popupLabel">Variable:</label><br>
+          <input autocomplete="off" type="text" style="width: 40%; top: 25%; height: 9%;" class="variableBar" id="forVariable" name="forVariable">
           <button type="submit" class="okButton">OK</button>
-          <label class="forTypeLabel">Type:</label>
-          <label class="forTypeInteger">
-            <input type="radio" name="forDatatype" value="Integer">
-            Integer
-          </label>
-          <label class="forTypeDouble">
-            <input type="radio" name="forDatatype" value="Double">
-            Double
-          </label>
           <label for="forStartValue" class="startValueLabel">Start Value:</label>
           <label for="forEndValue" class="endValueLabel">End Value:</label>
           <input autocomplete="off" type="text" id="forStartValue" name="forStartValue" class="startValueBar">
           <input autocomplete="off" type="text" id="forEndValue" name="forEndValue" class="endValueBar">
-          <label class="forDirectionLabel">Direction:</label>
-          <label class="forIncreaseDirection">
-            <input type="radio" name="forDirection" value="Increasing">
-            Increasing
-          </label>
-          <label class="forDecreaseDirection">
-            <input type="radio" name="forDirection" value="Decreasing">
-            Decreasing
-          </label>
           <label class="forStepLabel" for="forStep">Step By:</label>
           <input autocomplete="off" class="forStepBar" style="width: 40%;" type="text" id="forStep" name="forStep">
         </form>
@@ -226,9 +185,6 @@
     </div>
     <div draggable="true" class="output parallelogram block" id="parallelogram">
       <p>Output</p>
-    </div>
-    <div draggable="true" class="declare rectangle block" id="rectangle">
-      <p>Declare</p>
     </div>
     <div draggable="true" class="assign rectangle block" id="rectangle">
       <p>Assign</p>
