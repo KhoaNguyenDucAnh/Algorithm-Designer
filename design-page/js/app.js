@@ -45,6 +45,19 @@ const terminal = document.querySelector('.inputTerminal')
 
 var userInput = ""
 
+function highlightBlock(id){
+    const blockNodes = document.querySelectorAll('[class*="block"]');
+    blockNodes.forEach(node => {
+        if(!node.className.includes('oval') && !node.className.includes('display') && node.parentNode != parentPlace){
+            if(node.id == id){
+                node.style.backgroundColor = 'red'
+            } else {
+                node.style.backgroundColor = ''
+            }
+        }
+    });
+}
+
 
 terminalButton.addEventListener('click', function(event){
     event.preventDefault()
