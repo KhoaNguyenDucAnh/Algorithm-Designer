@@ -17,6 +17,9 @@ const cppPopup = document.querySelector('.cppPopup')
 const cppCloseButton = document.querySelector('.cppCloseButton')
 const saveButton = document.querySelector('.save-button')
 const toolBar = document.querySelector('.toolbar')
+const inputTerminal = document.querySelector('.inputTerminal')
+const outputTerminal = document.querySelector('.outputTerminal')
+const terminalButton = document.querySelector('.terminalButton')
 var body = document
 
 var currentTarget = null
@@ -38,8 +41,18 @@ const whileForm = document.querySelector('.whileForm')
 const forForm = document.querySelector('.forForm')
 const runForm = document.querySelector('.runForm')
 
-const terminal = document.querySelector('.terminal')
+const terminal = document.querySelector('.inputTerminal')
 
+var userInput = ""
+
+
+terminalButton.addEventListener('click', function(event){
+    event.preventDefault()
+    userInput = inputTerminal.value
+})
+function getUserInput(){
+    return userInput
+}
 saveButton.addEventListener('click', function(){
     updateDict()
 })
@@ -416,7 +429,7 @@ function getKeyValue(node) {
                 if(outputExpression === null){
                     outputExpression = ''
                 }
-                value["name"] = outputExpression
+                value["value"] = outputExpression
 
                 break
             case "assign rectangle block":
