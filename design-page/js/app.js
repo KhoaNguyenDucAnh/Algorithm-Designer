@@ -1361,8 +1361,7 @@ updateDict()
 
 function run() {
     dict = updateDict()
-    console.log(dict)
-    fetch(url + "run", {
+    fetch("/api/v1/algorithms/update", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1370,13 +1369,25 @@ function run() {
         body: JSON.stringify(dict)
     })
     .then(function(response) {
-        if (!response.ok) {
-            
+        console.log(response);
+        if (response.ok) {
+            const sse = new EventSource("/api/v1/algorithms/run");
+            let getId = true;
+            let id = null;
+
+            sse.onmessage = function(message) {
+                if (getId) {
+                    id = message.data;
+                    getId = false;
+                }
+                else if (message.data == id) {
+                    sse.close();
+                }
+                else {
+                    console.log(message.data);
+                }
+            };
         }
-        return response.json();
-    })
-    .then(function(data) {
-        return;
     });
 }
 
